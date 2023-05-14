@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace swolmate-client build",
+    "dev": "yarn workspace swolmate-server dev",
+    "dev:debug": "yarn workspace swolmate-server dev:debug",
+    "heroku-postbuild": "yarn workspace swolmate-client build",
+    "start": "yarn workspace swolmate-server start",
+    "dev:cypress": "yarn workspace swolmate-server dev:e2e",
+    "e2e:open": "yarn workspace swolmate-e2e e2e:open",
+    "e2e:run": "yarn workspace swolmate-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^16.18"
+  }
+}
