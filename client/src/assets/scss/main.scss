@@ -1,7 +1,120 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
-// place global css here
+
+/* Font family */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Background and text colors */
+body {
+  background-color: #F8F4E3;
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #F4A261;
+  color: #FFF;
+  padding: 1rem;
+}
+
+/* Navigation links */
+nav {
+  background-color: #2A9D8F;
+  color: #FFF;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main content */
+main {
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+/* Buttons */
+button {
+  background-color: #F4A261;
+  color: #FFF;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2A9D8F;
+}
+
+/* Forms */
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="email"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+form input[type="submit"] {
+  background-color: #2A9D8F;
+  color: #FFF;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #F4A261;
+}
+
+/* Homepage styles */
+.homepage {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.homepage-title {
+  color: #F4A261;
+}
+
+.homepage-subtitle {
+  color: #16756a;
+}
+
+
 *,
 *::before,
 *::after {
