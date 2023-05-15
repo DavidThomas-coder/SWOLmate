@@ -9,6 +9,11 @@ const RegistrationForm = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    firstName: "",
+    age: "",
+    pronouns: "",
+    cityNeighborhood: "",
+    experienceLevel: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -18,8 +23,9 @@ const RegistrationForm = () => {
 
   const validateInput = (payload) => {
     setErrors({});
-    const { email, password, passwordConfirmation } = payload;
-    const emailRegexp = config.validation.email.regexp.emailRegex;
+
+    const { email, password, passwordConfirmation, firstName, age, pronouns, cityNeighborhood, experienceLevel } = payload;
+    const emailRegexp = config.validation.email.regexp;
     let newErrors = {};
 
     if (!email.match(emailRegexp)) {
@@ -133,6 +139,41 @@ const RegistrationForm = () => {
               onChange={onInputChange}
             />
             <FormError error={errors.passwordConfirmation} />
+          </label>
+        </div>
+        <div>
+          <label>
+            First Name
+            <input type="text" name="firstName" value={userPayload.firstName} onChange={onInputChange} />
+            <FormError error={errors.firstName} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Age
+            <input type="integer" name="age" value={userPayload.age} onChange={onInputChange} />
+            <FormError error={errors.age} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Pronouns
+            <input type="text" name="pronouns" value={userPayload.pronouns} onChange={onInputChange} />
+            <FormError error={errors.pronouns} />
+          </label>
+        </div>
+        <div>
+          <label>
+            City/Neighborhood
+            <input type="text" name="cityNeighborhood" value={userPayload.cityNeighborhood} onChange={onInputChange} />
+            <FormError error={errors.cityNeighborhood} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Give a brief description of your "Gym Experience Level".  Are you new?  Have you been lifting for a year or two?
+            <input type="text" name="experienceLevel" value={userPayload.experienceLevel} onChange={onInputChange} />
+            <FormError error={errors.experienceLevel} />
           </label>
         </div>
         <div>
