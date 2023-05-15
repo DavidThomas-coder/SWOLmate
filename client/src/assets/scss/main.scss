@@ -9,20 +9,20 @@ body {
 
 /* Background and text colors */
 body {
-  background-color: #F8F4E3;
-  color: #333;
+  background-color: #333;
+  color: #fff;
 }
 
 /* Header */
 header {
-  background-color: #F4A261;
+  background-color: #007f5f;
   color: #FFF;
   padding: 1rem;
 }
 
 /* Navigation links */
 nav {
-  background-color: #2A9D8F;
+  background-color: #2ecc71;
   color: #FFF;
   padding: 1rem;
 }
@@ -59,7 +59,7 @@ main {
 
 /* Buttons */
 button {
-  background-color: #F4A261;
+  background-color: #2ecc71;
   color: #FFF;
   border: none;
   padding: 0.5rem 1rem;
@@ -68,14 +68,14 @@ button {
 }
 
 button:hover {
-  background-color: #2A9D8F;
+  background-color: #007f5f;
 }
 
 /* Forms */
 form label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #fff;
 }
 
 form input[type="text"],
@@ -85,10 +85,12 @@ form input[type="email"] {
   border: none;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+  background-color: #fff;
+  color: #333;
 }
 
 form input[type="submit"] {
-  background-color: #2A9D8F;
+  background-color: #2ecc71;
   color: #FFF;
   border: none;
   padding: 0.5rem 1rem;
@@ -97,7 +99,7 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-  background-color: #F4A261;
+  background-color: #007f5f;
 }
 
 /* Homepage styles */
@@ -107,12 +109,74 @@ form input[type="submit"]:hover {
 }
 
 .homepage-title {
-  color: #F4A261;
+  color: #2ecc71;
 }
 
 .homepage-subtitle {
-  color: #16756a;
+  color: #fff;
 }
+
+/* Topbar styling */
+
+.top-bar {
+  background-color: #2ecc71;
+  color: #fff;
+  border-bottom: 2px solid #ccc;
+}
+
+.top-bar .menu {
+  background-color: #2ecc71;
+}
+
+.top-bar-left {
+  background-color: #2ecc71;
+}
+
+.top-bar-left .menu li a {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.top-bar-left .menu li a:hover {
+  color: #007f5f;
+}
+
+.top-bar-left .menu .menu-text {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.top-bar-right .menu li a {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.top-bar-right .menu li a:hover {
+  color: #007f5f;
+}
+
+.menu-icon {
+  color: #fff;
+}
+
+.menu-icon:hover {
+  color: #007f5f;
+}
+
+@media only screen and (max-width: 39.9375em) {
+  .top-bar {
+    background-color: #2ecc71;
+    color: #333;
+
+  }
+}
+
+
+
+///////////////////////////////
 
 
 *,
