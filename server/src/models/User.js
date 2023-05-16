@@ -44,6 +44,41 @@ class User extends uniqueFunc(Model) {
 
     return serializedJson;
   }
+
+  static get relationMappings () {
+    const { Chat, UserChat, Message } = require ("./index.js")
+
+    return {
+      chats: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Chat,
+        join: {
+          from: "users.id",
+          through: {
+            from: "userChats.userId",
+            to: "userChats.chatId"
+          },
+          to: "chats.id"
+        }
+      },
+      userChats: {
+        relation: Model.HasManyRelation,
+        modelClass: UserChat,
+        join: {
+          from: "users.id",
+          to: "userChats.userId"
+        }
+      },
+      messages: {
+        relation: Model.HasManyRelation,
+        modelClass: Message,
+        join: {
+          from: "users.id",
+          to: "messages.userId"
+        }
+      }
+    }
+  }
 }
 
 module.exports = User;
