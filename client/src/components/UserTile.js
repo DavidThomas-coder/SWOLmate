@@ -5,11 +5,12 @@ const UserTile = (props) => {
     const { user } = props
 
     return (
-        <div>
+        <div className="user-tile cell medium-6">
             <p>{user.firstName}</p>
             <p>{user.age}</p>
             <p>{user.pronouns}</p>
             <p>{user.cityNeighborhood}</p>
+            <button>Message This User!</button>
         </div>
     )
 }
