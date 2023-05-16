@@ -17,4 +17,15 @@ chatsRouter.get("/", async (req, res) => {
     }
 })
 
-export default usersRouter;
+chatsRouter.get("/:id", async (req, res) => {
+    const { id } = req.params
+    try {
+        const chat = await Chat.query().findById(id)
+        const serializedChat = await ChatSerializer.showChatDetails(chat)
+        return res.status(200).json({ chat: serializedChat })
+    } catch (error) {
+        return res.status(500).json({ errors: error })
+    }
+})
+
+export default chatsRouter;
