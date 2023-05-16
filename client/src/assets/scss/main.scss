@@ -166,6 +166,17 @@ form input[type="submit"]:hover {
   color: #007f5f;
 }
 
+/////User Tile
+
+.user-tile {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  color: green;
+  border: 2px solid blue;
+}
+
+
 @media only screen and (max-width: 39.9375em) {
   .top-bar {
     background-color: #2ecc71;

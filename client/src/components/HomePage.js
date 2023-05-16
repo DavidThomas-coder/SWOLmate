@@ -27,13 +27,17 @@ const HomePage = () => {
     })
 
     return (
-        <div className="homepage">
+        <div className="homepage cell small-12">
+        <div className="grid-x">
+        <div className="cell small-12">
             <h1 className="homepage-title">SWOLmate</h1>
             <h3 className="homepage-subtitle">Find your perfect gym buddy!</h3>
             <h5 className="homepage-subtitle">Created by David Thomas</h5>
             <img src="https://i.imgur.com/efGAkY0.jpg" alt="gym image" />
-            <div className="user-list">{userTiles}</div>
-    </div>
+        </div>
+            <div className="cell medium-6">{userTiles}</div>
+        </div>
+        </div>
     );
 };
 
