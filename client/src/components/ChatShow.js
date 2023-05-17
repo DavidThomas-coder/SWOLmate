@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import MessageForm from "./MessageForm"
+import MessageTile from "./MessageTile"
 
 const ChatShow = (props) => {
     const [chatShow, setChatShow] = useState({
@@ -32,9 +33,7 @@ const ChatShow = (props) => {
         event.preventDefault()
         
         try {
-            const response = await fetch (
-                `/api/v1/chats/${chatShow.id}`,
-                {
+            const response = await fetch (`/api/v1/chats/${chatShow.id}/messages`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
