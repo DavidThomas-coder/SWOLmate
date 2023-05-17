@@ -3,6 +3,7 @@ import UserTile from "./UserTile";
 
 const HomePage = () => {
     const [users, setUsers] = useState([])
+    const [chatRequestSent, setChatRequestSent] = useState(false)
 
     const fetchUsers = async () => {
         try {
@@ -22,8 +23,37 @@ const HomePage = () => {
         fetchUsers()
     }, [])
 
+    const handleChatRequest = async (event, newChat) => {
+        event.preventDefault()
+        try {
+            const response = await fetch (`/api/v1/chats`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ chat: newChat })
+                }
+            )
+
+            if (response.ok) {
+                const body = await response.json()
+            } else {
+                console.error("Failed to start chat:", response.statusText)
+            }
+        } catch (error) {
+            console.error(`Error in fetch: ${error.message}`)
+        }
+    }
+
     const userTiles = users.map((user) => {
-        return <UserTile key={user.id} user={user} />
+        return (
+                <UserTile 
+                key={user.id} 
+                user={user} 
+                onChatRequest={(event) => handleChatRequest(event, user.id)}
+                chatRequestSent={chatRequestSent}
+                />
+        )
     })
 
     return (
