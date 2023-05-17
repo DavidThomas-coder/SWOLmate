@@ -10,13 +10,35 @@ const chatsRouter = new express.Router();
 
 chatsRouter.use("/:id/messages", chatsMessagesRouter)
 
+// chatsRouter.get("/", async (req, res) => {
+//     try {
+//         const chats = await Chat.query()
+//         const serializedChats = chats.map(chat => ChatSerializer.showChatDetails(chat))
+//         return res.status(200).json({ chats: serializedChats })
+//     } catch (error) {
+//         return res.status(500).json({ errors: error })
+//     }
+// })
+
+// chatsRouter.get("/", async (req, res) => {
+//     try {
+//         const currentUser = req.user
+//         const relatedChats = await currentUser.$relatedQuery("chats")
+//         const serializedChats = await ChatSerializer.showChatDetails(relatedChats)
+
+//         return res.status(200).json({ chats: serializedChats })
+//     } catch (error) {
+//         res.status(500).json({ errors: error.message })
+//     }
+// })
+
 chatsRouter.get("/", async (req, res) => {
     try {
-        const chats = await Chat.query()
-        const serializedChats = chats.map(chat => ChatSerializer.showChatDetails(chat))
-        return res.status(200).json({ chats: serializedChats })
+        const chats = await req.user.$relatedQuery("chats")
+
+        return res.status(200).json({ user: req.user, chats: chats })
     } catch (error) {
-        return res.status(500).json({ errors: error })
+        res.status(500).json({ errors: error.message })
     }
 })
 
@@ -24,7 +46,7 @@ chatsRouter.get("/:id", async (req, res) => {
     const { id } = req.params
     try {
         const chat = await Chat.query().findById(id)
-        const serializedChat = await ChatSerializer.showChatDetails(chat)
+        const serializedChat = await ChatSerializer.showChatDetails(chat, req.user)
         return res.status(200).json({ chat: serializedChat })
     } catch (error) {
         return res.status(500).json({ errors: error })
