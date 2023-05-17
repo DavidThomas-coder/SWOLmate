@@ -10,7 +10,7 @@ class Message extends Model {
             type: "object",
             required: ["messageBody"],
             properties: {
-                messageBody: {type:"text"}
+                messageBody: { type: "string" }
             }
         }
     }
