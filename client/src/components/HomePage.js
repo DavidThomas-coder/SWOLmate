@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import UserTile from "./UserTile";
+import { Redirect } from "react-router-dom";
 
 const HomePage = () => {
     const [users, setUsers] = useState([])
     const [chatRequestSent, setChatRequestSent] = useState(false)
+    const [redirectToChat, setRedirectToChat] = useState(false)
+    const [chat, setChat] = useState(null)
 
     const fetchUsers = async () => {
         try {
@@ -37,6 +40,9 @@ const HomePage = () => {
 
             if (response.ok) {
                 const body = await response.json()
+                setChat(body.chat)
+                setRedirectToChat(true)
+                setChatRequestSent(true)
             } else {
                 console.error("Failed to start chat:", response.statusText)
             }
@@ -52,12 +58,14 @@ const HomePage = () => {
                 user={user} 
                 onChatRequest={(event) => handleChatRequest(event, user.id)}
                 chatRequestSent={chatRequestSent}
+                chat={chat}
                 />
         )
     })
 
     return (
         <div className="homepage cell small-12">
+            {redirectToChat && <Redirect to={`/chats/${chat.id}`} />}
         <div className="grid-x">
         <div className="cell small-12">
             <h1 className="homepage-title">SWOLmate</h1>
