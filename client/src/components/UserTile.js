@@ -1,8 +1,12 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 
 const UserTile = (props) => {
-    const { user } = props
+    const { user, onChatRequest, chatRequestSent } = props
+
+    const handleClick = (event) => {
+        event.preventDefault()
+        onChatRequest(event, user.id)
+    }
 
     return (
         <div className="user-tile cell medium-6">
@@ -10,7 +14,9 @@ const UserTile = (props) => {
             <p>{user.age}</p>
             <p>{user.pronouns}</p>
             <p>{user.cityNeighborhood}</p>
-            <button>Message This User!</button>
+            <button onClick={handleClick} disabled={chatRequestSent}>
+                {chatRequestSent ? "Request Sent" : "Message This User!"}
+            </button>
         </div>
     )
 }

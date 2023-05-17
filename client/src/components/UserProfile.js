@@ -27,7 +27,7 @@ const UserProfile = ({ user }) => {
         console.log(chat)
         return (
             <div key={chat.id}>
-                <p>Here is one of your chats</p>
+                <p>{chat.title}</p>
             </div>
         )
     })
