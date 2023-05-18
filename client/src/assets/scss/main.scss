@@ -177,6 +177,16 @@ form input[type="submit"]:hover {
   border: 2px solid blue;
 }
 
+//// Result Tile
+
+.result-tile {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  color: green;
+  border: 2px solid blue;
+}
+
 
 @media only screen and (max-width: 39.9375em) {
   .top-bar {
