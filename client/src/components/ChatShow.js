@@ -71,7 +71,6 @@ const ChatShow = (props) => {
     return (
         <div className="show-page">
             <h2 className="show-title">Chat It Up!</h2>
-            {/* <img src={socialMediaShow.imageUrl} alt={socialMediaShow.name} /> */}
                 <MessageForm
                     handleMessageSubmit={handleMessageSubmit}
                     messages={chatShow.messages}
