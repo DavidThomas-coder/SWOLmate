@@ -39,6 +39,21 @@ class Chat extends Model {
             }
         }
     }
+
+    static async addChat(newChat) {
+        const chatExists = await Chat.query().findOne({id: newChat.id })
+        let postedChat 
+        if (!chatExists) {
+            postedChat = await Chat.query().insertAndFetch(newChat)
+        } else if (chatExists.chat === newChat.chat) {
+            postedChat = await Chat.query().patchAndFetchById(chatExists.id, {})
+        } else {
+            postedChat = await Chat.query().patchAndFetchById(chatExists.id, {
+                chat: newChat.chat
+            })
+        }
+        return postedChat
+    }
 }
 
 module.exports = Chat

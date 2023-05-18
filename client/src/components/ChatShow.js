@@ -29,7 +29,7 @@ const ChatShow = (props) => {
         getChat()
     }, [])
 
-    const handleMessageSubmit = async (event, newMessage) => {
+    const handleMessageSubmit = async (event, newMessage, newUserId ) => {
         event.preventDefault()
         
         try {
@@ -38,7 +38,7 @@ const ChatShow = (props) => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ message: newMessage })
+                    body: JSON.stringify({ message: newMessage, userId: newUserId })
                 }
             )
 

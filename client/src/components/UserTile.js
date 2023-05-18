@@ -16,7 +16,7 @@ const UserTile = (props) => {
             <p>{user.pronouns}</p>
             <p>{user.cityNeighborhood}</p>
             <button onClick={handleClick}>
-                Message This user!
+                Message This User!
             </button>
             {chat && <Redirect to={`/chats/${chat.id}`} />}
         </div>
