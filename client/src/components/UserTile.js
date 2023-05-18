@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom"
 
 const UserTile = (props) => {
-    const { user, onChatRequest, chatRequestSent, chat } = props
+    const { user, onChatRequest, chat } = props
 
     const handleClick = (event) => {
         event.preventDefault()
@@ -15,8 +15,8 @@ const UserTile = (props) => {
             <p>{user.age}</p>
             <p>{user.pronouns}</p>
             <p>{user.cityNeighborhood}</p>
-            <button onClick={handleClick} disabled={chatRequestSent}>
-                {chatRequestSent ? "Request Sent" : "Message This User!"}
+            <button onClick={handleClick}>
+                Message This user!
             </button>
             {chat && <Redirect to={`/chats/${chat.id}`} />}
         </div>
