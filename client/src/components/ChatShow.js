@@ -38,7 +38,7 @@ const ChatShow = (props) => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ message: newMessage })
+                    body: JSON.stringify({ message: newMessage, userId: newUserId })
                 }
             )
 

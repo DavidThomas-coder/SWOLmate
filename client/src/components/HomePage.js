@@ -25,7 +25,7 @@ const HomePage = () => {
         fetchUsers()
     }, [])
 
-    const handleChatRequest = async (event, newChat) => {
+    const handleChatRequest = async (event, userId, newChat) => {
         event.preventDefault()
         try {
             const response = await fetch (`/api/v1/chats`, {
@@ -33,7 +33,7 @@ const HomePage = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ chat: newChat })
+                    body: JSON.stringify({ chat: newChat, userId })
                 }
             )
 
@@ -52,10 +52,10 @@ const HomePage = () => {
     const userTiles = users.map((user) => {
         return (
                 <UserTile 
-                key={user.id} 
-                user={user} 
-                onChatRequest={(event) => handleChatRequest(event, user.id)}
-                chat={chat}
+                    key={user.id} 
+                    user={user} 
+                    onChatRequest={(event) => handleChatRequest(event, user.id)}
+                    chat={chat}
                 />
         )
     })
