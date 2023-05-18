@@ -24,6 +24,7 @@ const HomePage = () => {
     useEffect(() => {
         fetchUsers()
     }, [])
+    
 
     const handleChatRequest = async (event, userId, newChat) => {
         event.preventDefault()

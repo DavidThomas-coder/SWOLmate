@@ -10,42 +10,6 @@ const chatsRouter = new express.Router();
 
 chatsRouter.use("/:id/messages", chatsMessagesRouter)
 
-// chatsRouter.get("/", async (req, res) => {
-//     try {
-//         const chats = await Chat.query()
-//         const serializedChats = chats.map(chat => ChatSerializer.showChatDetails(chat))
-//         return res.status(200).json({ chats: serializedChats })
-//     } catch (error) {
-//         return res.status(500).json({ errors: error })
-//     }
-// })
-
-// chatsRouter.get("/", async (req, res) => {
-//     try {
-//         const currentUser = req.user
-//         const relatedChats = await currentUser.$relatedQuery("chats")
-//         const serializedChats = await ChatSerializer.showChatDetails(relatedChats)
-
-//         return res.status(200).json({ chats: serializedChats })
-//     } catch (error) {
-//         res.status(500).json({ errors: error.message })
-//     }
-// })
-
-//BELOW IS OG GET, WORKED BEFORE IMPLEMENTING ADJUSTED CHAT SERIALIZER
-
-// chatsRouter.get("/", async (req, res) => {
-//     try {
-//         const chats = await req.user.$relatedQuery("chats")
-
-//         return res.status(200).json({ user: req.user, chats: chats })
-//     } catch (error) {
-//         res.status(500).json({ errors: error.message })
-//     }
-// })
-
-//BELOW IS NEW GET, AFTER IMPLEMENTING ADJUSTED CHAT SERIALIZER
-
 chatsRouter.get("/", async (req, res) => {
     try {
         const chats = await req.user.$relatedQuery("chats")
@@ -75,25 +39,10 @@ chatsRouter.get("/:id", async (req, res) => {
 chatsRouter.post("/", async (req, res) => {
     const requestedUserId = req.body.userId
     const currentUserId = req.user.id
-    console.log("HEY BACKEND")
-    console.log(`The requestedUserId is: ${requestedUserId}`)
-    console.log(`The currentUserId is: ${currentUserId}`)
-    // console.log(body)
-    try {
-        // Way 1, too many queries 
-        // look up all chats that have a UserChat that has the requestedUserId
-            // this provides you an array of userChats with that user's id
-        
-        // iterate over that array of userChats
-            // for each userChat, query to see if there exists a userChat with that chat id, and the current user's id 
-            // if not, then create a new chat,
-            // if true, then query for that chat and return to the frontend 
 
-        // BETTER WAY
-            // get all of kayleighs chats 
+    try {
             const requestedUser = await User.query().findById(requestedUserId)
             const requestedUserChats = await requestedUser.$relatedQuery("chats")
-            // get all of current user's chats 
             const currentUserChats = await req.user.$relatedQuery("chats")
             let matchingChat
             requestedUserChats.forEach(requestedChat => {
@@ -118,4 +67,4 @@ chatsRouter.post("/", async (req, res) => {
     }
 })
 
-export default chatsRouter;
+export default chatsRouter
