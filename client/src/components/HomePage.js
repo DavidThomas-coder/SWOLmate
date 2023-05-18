@@ -4,7 +4,6 @@ import { Redirect } from "react-router-dom";
 
 const HomePage = () => {
     const [users, setUsers] = useState([])
-    const [chatRequestSent, setChatRequestSent] = useState(false)
     const [redirectToChat, setRedirectToChat] = useState(false)
     const [chat, setChat] = useState(null)
 
@@ -42,7 +41,6 @@ const HomePage = () => {
                 const body = await response.json()
                 setChat(body.chat)
                 setRedirectToChat(true)
-                setChatRequestSent(true)
             } else {
                 console.error("Failed to start chat:", response.statusText)
             }
@@ -57,7 +55,6 @@ const HomePage = () => {
                 key={user.id} 
                 user={user} 
                 onChatRequest={(event) => handleChatRequest(event, user.id)}
-                chatRequestSent={chatRequestSent}
                 chat={chat}
                 />
         )
