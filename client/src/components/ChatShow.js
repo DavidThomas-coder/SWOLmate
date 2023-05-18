@@ -29,7 +29,7 @@ const ChatShow = (props) => {
         getChat()
     }, [])
 
-    const handleMessageSubmit = async (event, newMessage) => {
+    const handleMessageSubmit = async (event, newMessage, newUserId ) => {
         event.preventDefault()
         
         try {
