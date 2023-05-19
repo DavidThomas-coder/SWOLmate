@@ -44,15 +44,21 @@ usersRouter.get("/image", async (req, res) => {
 
 usersRouter.post("/image", uploadImage.single("image"), async (req, res) => {
   try {
+
     const { body } = req;
+    console.log(body.image)
+    console.log(req.file.location)
+
     const data = {
       ...body,
       image: req.file.location,
     };
     const user = await User.query().findById(req.user.id);
     await user.$query().patch({ imageUrl: req.file.location });
+    console.log(user)
     return res.status(201).json({ photo: user.imageUrl });
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ errors: error });
   }
 });
