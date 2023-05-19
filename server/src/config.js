@@ -5,7 +5,7 @@ import getDatabaseUrl from "./config/getDatabaseUrl.cjs";
 const development = {
   awsAccess: { key: process.env.AWS_ACCESS_KEY },
   awsSecret: { key: process.env.AWS_SECRET_KEY },
-  s3Bucket: { name: process.env.S3_BUCKET_DEVELOPMENT },
+  s3Bucket: { name: process.env.S3_BUCKET_PRODUCTION },
   databaseUrl: getDatabaseUrl(getNodeEnv()),
   nodeEnv: getNodeEnv(),
   session: { secret: process.env.SESSION_SECRET },
