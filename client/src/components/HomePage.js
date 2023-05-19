@@ -91,16 +91,7 @@ const HomePage = () => {
         }
     }
 
-    const userTiles = users.map((user) => {
-        return (
-                <UserTile 
-                    key={user.id} 
-                    user={user} 
-                    onChatRequest={(event) => handleChatRequest(event, user.id)}
-                    chat={chat}
-                />
-        )
-    })
+
 
     return (
         <div className="homepage cell small-12">
@@ -111,11 +102,10 @@ const HomePage = () => {
             <h3 className="homepage-subtitle">Find your perfect gym buddy!</h3>
             <h5 className="homepage-subtitle">Created by David Thomas</h5>
             <img src="https://i.imgur.com/efGAkY0.jpg" alt="gym image" />
-            <GoogleMap />
+            <GoogleMap users={users} chat={chat} handleChatRequest={handleChatRequest} />
         {/* </div> */}
-        <div className="grid-x">
-            <div className="cell medium-6">{userTiles}</div>
-        </div>
+        
+            
         </div>
     );
 };

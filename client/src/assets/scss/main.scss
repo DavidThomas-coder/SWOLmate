@@ -187,6 +187,32 @@ form input[type="submit"]:hover {
   border: 2px solid blue;
 }
 
+// Users and Results
+
+.results-main {
+  display: flex;
+}
+
+.result-list-container {
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.user-tiles-container {
+  flex-grow: 1;
+  padding-left: 10px;
+  padding-right: 20px
+}
+
+// Map Search Bar 
+
+.map-search-container {
+  max-width: 500px; /* Adjust the value as needed */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+
+
 
 @media only screen and (max-width: 39.9375em) {
   .top-bar {

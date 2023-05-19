@@ -3,6 +3,7 @@ import { Loader } from "@googlemaps/js-api-loader"
 
 import MapSearch from "./MapSearch"
 import ResultList from "./ResultList"
+import UserTile from "./UserTile"
 
 const GoogleMap = (props) => {
 
@@ -67,6 +68,17 @@ const GoogleMap = (props) => {
         })
     }, [searchQuery])
 
+    const userTiles = props.users.map((user) => {
+        return (
+                <UserTile 
+                    key={user.id} 
+                    user={user} 
+                    onChatRequest={(event) => props.handleChatRequest(event, user.id)}
+                    chat={props.chat}
+                />
+        )
+    })
+
     return (
         <>
             <h1>Google Map BITCH</h1>
@@ -75,11 +87,23 @@ const GoogleMap = (props) => {
                 <li>Could provide some info</li>
                 <li>Or not, whatever</li>
             </ul>
-            <MapSearch setSearchQuery={setSearchQuery} />
-            <p className="error">{error}</p>
-            <div id="map" style={{height:400}}></div>
-            <div className="result-list-container cell medium-6">
-                <ResultList searchResults={searchResults} />
+            <div className="map-search-container">
+                <MapSearch setSearchQuery={setSearchQuery} />
+            </div>
+            <div id="map" style={{ height: 400 }}></div>
+            <div className="results-main grid-x grid-margin-x">
+                <div className="cell medium-6">
+                    <div className="result-list-container">
+                        <h2>Search Results:</h2>
+                        <ResultList searchResults={searchResults} />
+                    </div>
+                </div>
+                <div className="cell medium-6">
+                    <div className="user-tiles-container">
+                        <h2>SWOLmate Users Near You!</h2>
+                        {userTiles}
+                    </div>
+                </div>
             </div>
         </>
     )
