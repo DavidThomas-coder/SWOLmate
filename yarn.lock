@@ -1129,6 +1129,13 @@
   dependencies:
     fast-deep-equal "^3.1.3"
 
+"@googlemaps/js-api-loader@^1.15.2":
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/@googlemaps/js-api-loader/-/js-api-loader-1.15.2.tgz#470be4454f4f31d7575ef297d8752dd87975162b"
+  integrity sha512-8FJwvd1F5Zxs/kDuH/ESFwSjOY0ZyGVkPDyv2VmC9cg8n1vPUKmvZJh/EzoikC/Z5itGMTRfcxmvSapXAi0+zQ==
+  dependencies:
+    fast-deep-equal "^3.1.3"
+
 "@hot-loader/react-dom@~16.13":
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/@hot-loader/react-dom/-/react-dom-16.13.0.tgz#de245b42358110baf80aaf47a0592153d4047997"
