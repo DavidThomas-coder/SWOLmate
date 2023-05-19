@@ -7,7 +7,7 @@ import UserTile from "./UserTile"
 
 const GoogleMap = (props) => {
 
-    const [searchQuery, setSearchQuery] = useState("")
+    const [searchQuery, setSearchQuery] = useState("gyms")
     const [searchResults, setSearchResults] = useState([])
     const [error, setError] = useState("")
 
@@ -81,16 +81,12 @@ const GoogleMap = (props) => {
 
     return (
         <>
-            <h1>Google Map BITCH</h1>
-            <ul>
-                <li>Here is some lines of text</li>
-                <li>Could provide some info</li>
-                <li>Or not, whatever</li>
-            </ul>
+            <h1>Find Places Near You!</h1>
+            <p>We're showing you gyms by default, but search for anything you'd like!</p>
             <div className="map-search-container">
                 <MapSearch setSearchQuery={setSearchQuery} />
             </div>
-            <div id="map" style={{ height: 400 }}></div>
+            <div id="map" style={{ height: 400, maxWidth: '100%', margin: '0 auto', marginTop: '20px', marginLeft: '40px', marginRight: '40px' }}></div>
             <div className="results-main grid-x grid-margin-x">
                 <div className="cell medium-6">
                     <div className="result-list-container">
