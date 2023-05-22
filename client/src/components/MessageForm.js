@@ -25,11 +25,12 @@ const MessageForm = ({ handleMessageSubmit, messages }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
+        <div className="MessageForm-wrapper">
+            <form onSubmit={handleSubmit} className="MessageForm">
+                <label>
                 Hit Up Your Potential SWOLmate!
-            </label>
-            <label>
+                </label>
+                <label>
                 Message here:
                 <input
                     type="text"
@@ -37,12 +38,15 @@ const MessageForm = ({ handleMessageSubmit, messages }) => {
                     value={newMessage.messageBody}
                     onChange={handleMessageChange}
                 />
-            </label>
-            {errors.messageBody && <div className="error">{errors.messageBody}</div>}
-            <button type="submit" className="message-btn">
+                
+                </label>
+                {errors.messageBody && <div className="error">{errors.messageBody}</div>}
+                <button type="submit" className="message-btn">
                 Send
-            </button>
-        </form>
+                </button>
+            </form>
+        </div>
+
     )
 }
 
