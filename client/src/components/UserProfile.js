@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// import Dropzone from "react-dropzone"
+import ProfileImage from "./ProfileImage";
 
 const UserProfile = ({ user }) => {
     const [userChats, setUserChats] = useState([]);
@@ -36,6 +38,10 @@ const UserProfile = ({ user }) => {
     return (
         <div className="userProfile">
         <h1>Welcome to SWOLmate!</h1>
+        <div className="profile-box cell medium-6">
+            <div className="image-box cell rounded-corner"></div>
+                <ProfileImage />
+        </div>
         <p>Your Name: {user.firstName}</p>
         <p>Your Email: {user.email}</p>
         <p>Your Age: {user.age}</p>
