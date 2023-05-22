@@ -29,7 +29,7 @@ const UserProfile = ({ user }) => {
     const chatsArray = userChats.map((chat) => {
         console.log(chat);
         return (
-        <div key={chat.id}>
+        <div key={chat.id}className="chat-item">
             <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
         </div>
         );
