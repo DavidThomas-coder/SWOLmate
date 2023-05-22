@@ -166,6 +166,71 @@ form input[type="submit"]:hover {
   color: #007f5f;
 }
 
+// Show Page
+
+.show-title {
+  text-align: center;
+  font-size: 72px;
+  color: #2ecc71;
+  margin-bottom: 20px;
+}
+
+.message-box {
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.message-box .profile-pic {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message-tile {
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Add this line to center the tile horizontally */
+  max-width: 600px; /* Add this line to limit the maximum width of the tile */
+  margin: 0 auto; /* Add this line to center the tile horizontally */
+}
+
+/* Rest of the CSS remains the same */
+
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.sender-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.message-text {
+  font-size: 14px;
+}
+
+
+
 
 /////User Tile
 
@@ -212,6 +277,66 @@ form input[type="submit"]:hover {
   margin: 0 auto; /* Center the container horizontally */
 }
 
+// Message Form
+
+.MessageForm-wrapper {
+  background-color: #444;
+  padding: 20px;
+  border: 2px solid #2ecc71;
+  border-radius: 5px;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.MessageForm form {
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MessageForm form input {
+  background-color: #fff;
+  color: #333;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 80%;
+  height: auto;
+  min-height: 100px;
+  resize: none;
+  box-sizing: border-box;
+  text-align: left;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+.MessageForm .error {
+  color: #ff0000; /* Red error message color */
+  margin-bottom: 10px;
+}
+
+.MessageForm .message-btn {
+  background-color: #2ecc71; /* Green button background */
+  color: #fff; /* White button text */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+
 
 
 
@@ -231,9 +356,25 @@ form input[type="submit"]:hover {
   position: relative;
 }
 
-.userProfile h1 {
-  color: #2ecc71;
+.userProfile .profile-info {
+  background-color: #444;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  color: #ffffff; /* Set the default text color for the box */
 }
+
+.userProfile h1 {
+  color: #2ecc71; /* Set the h1 color to green */
+}
+
+.userProfile p {
+  color: #ffffff; /* Set the p color to white */
+}
+
+
+
 
 .profile-box {
   position: absolute;
@@ -265,6 +406,7 @@ form input[type="submit"]:hover {
 
 .profile-box .picture-form {
   margin-top: 10px; /* Adjust the margin as per your preference */
+  background-color: #565656;
 }
 
 .profile-info {
@@ -272,6 +414,7 @@ form input[type="submit"]:hover {
   padding: 20px;
   margin: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
+  color: #2ecc71;
 }
 
 /* Chat List */
