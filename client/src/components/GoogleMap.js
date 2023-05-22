@@ -30,12 +30,12 @@ const GoogleMap = (props) => {
                         const request = {
                             query: searchQuery,
                             location: userLocation,
-                            radius: "500"
+                            radius: "400"
                         }
 
                         const map = new google.maps.Map(document.getElementById("map"), {
                             center: userLocation,
-                            zoom: 11,
+                            zoom: 13,
                         })
 
                         const service = new google.maps.places.PlacesService(map)
