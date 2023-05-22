@@ -231,9 +231,25 @@ form input[type="submit"]:hover {
   position: relative;
 }
 
-.userProfile h1 {
-  color: #2ecc71;
+.userProfile .profile-info {
+  background-color: #444;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  color: #ffffff; /* Set the default text color for the box */
 }
+
+.userProfile h1 {
+  color: #2ecc71; /* Set the h1 color to green */
+}
+
+.userProfile p {
+  color: #ffffff; /* Set the p color to white */
+}
+
+
+
 
 .profile-box {
   position: absolute;
@@ -265,6 +281,7 @@ form input[type="submit"]:hover {
 
 .profile-box .picture-form {
   margin-top: 10px; /* Adjust the margin as per your preference */
+  background-color: #565656;
 }
 
 .profile-info {
@@ -272,6 +289,7 @@ form input[type="submit"]:hover {
   padding: 20px;
   margin: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
+  color: #2ecc71;
 }
 
 /* Chat List */

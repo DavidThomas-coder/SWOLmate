@@ -42,12 +42,14 @@ const UserProfile = ({ user }) => {
             <div className="image-box cell rounded-corner"></div>
                 <ProfileImage />
         </div>
-        <p>Your Name: {user.firstName}</p>
-        <p>Your Email: {user.email}</p>
-        <p>Your Age: {user.age}</p>
-        <p>Your Pronouns: {user.pronouns}</p>
-        <p>Your City/Neighborhood: {user.cityNeighborhood}</p>
-        <p>Your Experience Level: {user.experienceLevel}</p>
+        <div className="profile-info">
+            <p>Your Name: {user.firstName}</p>
+            <p>Your Email: {user.email}</p>
+            <p>Your Age: {user.age}</p>
+            <p>Your Pronouns: {user.pronouns}</p>
+            <p>Your City/Neighborhood: {user.cityNeighborhood}</p>
+            <p>Your Experience Level: {user.experienceLevel}</p>
+        </div>
         <div className="chat-list">
             <h2>Your Chats:</h2>
             {chatsArray}
