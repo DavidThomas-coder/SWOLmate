@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import UserTile from "./UserTile";
 import { Redirect } from "react-router-dom";
-import { Loader } from "@googlemaps/js-api-loader"
 import GoogleMap from "./GoogleMap";
 
 const HomePage = () => {
