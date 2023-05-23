@@ -193,17 +193,26 @@ form input[type="submit"]:hover {
 }
 
 .message-tile {
-  background-color: #444;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Add this line to center the tile horizontally */
-  max-width: 600px; /* Add this line to limit the maximum width of the tile */
-  margin: 0 auto; /* Add this line to center the tile horizontally */
+  margin-bottom: 10px;
 }
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.user-info img {
+  width: 80px; /* Adjust the width to your desired size */
+  height: 80px; /* Adjust the height to your desired size */
+}
+
+.message-body {
+  flex-grow: 1;
+}
+
 
 /* Rest of the CSS remains the same */
 
