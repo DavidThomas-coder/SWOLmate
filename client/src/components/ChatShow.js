@@ -24,7 +24,7 @@ const ChatShow = (props) => {
             console.error(`Error in fetch: ${err.message}`)
         }
     }
-
+g
     useEffect(() => {
         getChat()
     }, [])
