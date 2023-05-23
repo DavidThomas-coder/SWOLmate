@@ -444,7 +444,10 @@ form input[type="submit"]:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
   color: #2ecc71;
   max-width: 800px; /* Adjust the value as needed */
+  margin-right: auto; /* Center the box horizontally */
 }
+
+
 
 /* Chat List */
 .chat-list {
