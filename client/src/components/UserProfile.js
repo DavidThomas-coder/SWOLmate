@@ -37,25 +37,30 @@ const UserProfile = ({ user }) => {
 
     return (
         <div className="userProfile">
-        <h1>Welcome to SWOLmate!</h1>
-        <div className="profile-box cell medium-6">
-            <div className="image-box cell rounded-corner"></div>
-                <ProfileImage />
-        </div>
-        <div className="profile-info">
-            <p>Your Name: {user.firstName}</p>
-            <p>Your Email: {user.email}</p>
-            <p>Your Age: {user.age}</p>
-            <p>Your Pronouns: {user.pronouns}</p>
-            <p>Your City/Neighborhood: {user.cityNeighborhood}</p>
-            <p>Your Experience Level: {user.experienceLevel}</p>
-        </div>
-        <div className="chat-list">
+          <h1>Welcome to SWOLmate!</h1>
+          <div className="grid-x">
+            <div className="cell medium-6">
+              <div className="profile-box cell rounded-corner">
+                <ProfileImage className="profile-picture" />
+              </div>
+            </div>
+            <div className="cell medium-6 profile-info">
+              <p>Your Name: {user.firstName}</p>
+              <p>Your Email: {user.email}</p>
+              <p>Your Age: {user.age}</p>
+              <p>Your Pronouns: {user.pronouns}</p>
+              <p>Your City/Neighborhood: {user.cityNeighborhood}</p>
+              <p>Your Experience Level: {user.experienceLevel}</p>
+            </div>
+          </div>
+          <div className="chat-list">
             <h2>Your Chats:</h2>
             {chatsArray}
+          </div>
         </div>
-        </div>
-    );
+      );
+      
+      
 };
 
 export default UserProfile;
