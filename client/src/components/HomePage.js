@@ -9,44 +9,6 @@ const HomePage = () => {
     const [redirectToChat, setRedirectToChat] = useState(false)
     const [chat, setChat] = useState(null)
 
-    // const loader = new Loader({
-    //     apiKey: "AIzaSyDum5hxOQ4YOWlsfYmS9xknVNvgvHLv858",
-    //     libraries: ["places"],
-    // })
-
-    // const mapLoader = () => {
-    //     loader.load().then(() => {
-    //         const boston = { lat: 42.361, lng: -71.057 }
-
-    //         const map = new google.maps.Map(document.getElementById("map"), {
-    //             center: boston,
-    //             zoom: 12
-    //         })
-
-    //         const request = {
-    //             query: "gyms",
-    //             location: boston,
-    //             radius: "100",
-    //         }
-
-    //         const service = new google.maps.places.PlacesService(map)
-    //         service.textSearch(request, function (results, status) {
-    //             if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //                 results.forEach((result) => {
-    //                     new google.maps.Marker({
-    //                         position: new google.maps.LatLng(
-    //                             result.geometry.location.lat(),
-    //                             result.geometry.location.lng()
-    //                         ),
-    //                         map:map,
-    //                     })
-    //                 })
-    //                 map.setCenter(results[0].geometry.location)
-    //             }
-    //         })
-    //     })
-    // }
-
     const fetchUsers = async () => {
         try {
             const response = await fetch ("/api/v1/users")
@@ -63,7 +25,6 @@ const HomePage = () => {
 
     useEffect(() => {
         fetchUsers()
-        // mapLoader()
     }, [])
     
 
