@@ -249,7 +249,31 @@ form input[type="submit"]:hover {
   margin: 10px;
   color: green;
   border: 2px solid blue;
+  display: flex;
+  align-items: center;
 }
+
+.user-info {
+  flex-grow: 1;
+}
+
+.user-info p {
+  margin-bottom: 5px;
+}
+
+.user-info button {
+  margin-top: 10px;
+}
+
+.user-image {
+  margin-left: 10px;
+}
+
+.user-image img {
+  width: 100px; /* Adjust the width to your desired size */
+  height: 100px; /* Adjust the height to your desired size */
+}
+
 
 //// Result Tile
 

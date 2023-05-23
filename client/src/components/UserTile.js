@@ -11,16 +11,21 @@ const UserTile = (props) => {
 
     return (
         <div className="user-tile cell medium-6">
-            <p>{user.firstName}</p>
-            <p>{user.age}</p>
-            <p>{user.pronouns}</p>
-            <p>{user.cityNeighborhood}</p>
-            <button onClick={handleClick}>
+            <div className="user-info">
+                <p>{user.firstName}</p>
+                <p>{user.age}</p>
+                <p>{user.pronouns}</p>
+                <p>{user.cityNeighborhood}</p>
+                <button onClick={handleClick}>
                 Message This User!
-            </button>
-            {chat && <Redirect to={`/chats/${chat.id}`} />}
-        </div>
-    )
+                </button>
+                {chat && <Redirect to={`/chats/${chat.id}`} />}
+            </div>
+            <div className="user-image">
+                <img src={user.imageUrl} alt="Profile" />
+            </div>
+            </div>
+        );
 }
 
 export default UserTile
