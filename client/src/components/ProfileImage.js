@@ -66,7 +66,7 @@ const ProfileImage = (props) => {
                 <section>
                 <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    <p>Upload Your Profile Picture - drag 'n' drop or click to upload</p>
+                    <p>Click Here To Choose Your Profile Picture - then click 'Add' to mount!</p>
                 </div>
                 </section>
             )}
