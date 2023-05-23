@@ -430,7 +430,6 @@ form input[type="submit"]:hover {
   width: 150px; /* Adjust the width as per your preference */
   height: 150px; /* Adjust the height as per your preference */
   object-fit: cover; /* Ensure the image fills the container */
-  border-radius: 50%; /* Make the image circular */
 }
 
 .profile-box .picture-form {
@@ -444,7 +443,11 @@ form input[type="submit"]:hover {
   margin: 20px auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
   color: #2ecc71;
+  max-width: 800px; /* Adjust the value as needed */
+  margin-right: auto; /* Center the box horizontally */
 }
+
+
 
 /* Chat List */
 .chat-list {
