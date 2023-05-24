@@ -5,9 +5,22 @@ const UserInformation = (props) => {
     
     return (
         <div className="user-information">
-            <h4>{user.firstName}</h4>
-            <p>Age: {user.age}</p>
-            <p>Experience Level: {user.experienceLevel}</p>
+            <div className="user-info-left">
+                <h3>{user.firstName}</h3>
+                <p>Age: {user.age}</p>
+                <p>{user.pronouns}</p>
+                <p>
+                {user.cityNeighborhood}, {user.state}
+                </p>
+                <p>Experience Level: {user.experienceLevel}</p>
+            </div>
+            <div className="user-info-right">
+                <img
+                src={user.imageUrl || "https://i.imgur.com/cFrP4WI.png"}
+                alt="Profile"
+                className="profile-image"
+                />
+            </div>
         </div>
     )
 }

@@ -92,20 +92,26 @@ const ChatShow = (props) => {
         );
 
 
-    return (
-        <div className="show-page">
-        <h2 className="show-title">Chat It Up!</h2>
-        <UserInformation 
-            user={chatShow.otherUser}
-        />
-        <MessageForm
-            handleMessageSubmit={handleMessageSubmit}
-            messages={chatShow.messages}
-        />
-            <ul>{messageList}</ul>
-        </div>
-    );
-};
+        return (
+            <div className="show-page">
+                <h2 className="show-title">Chat It Up!</h2>
+                <div className="grid-container">
+                    <div className="grid-x grid-margin-x">
+                    <div className="cell medium-6">
+                        <UserInformation user={chatShow.otherUser} />
+                    </div>
+                    <div className="cell medium-6">
+                        <MessageForm
+                        handleMessageSubmit={handleMessageSubmit}
+                        messages={chatShow.messages}
+                        />
+                    </div>
+                    </div>
+                </div>
+                <ul>{messageList}</ul>
+                </div>
+            );
+}
 
 export default ChatShow;
 

@@ -225,6 +225,32 @@ form input[type="submit"]:hover {
   flex-grow: 1;
 }
 
+.user-information {
+  background-color: #00022f;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  border: 2px solid #ffffff;
+}
+
+.user-info-left {
+  flex: 1;
+}
+
+.user-info-right {
+  margin-left: 10px;
+}
+
+.profile-image {
+  width: 180px; /* Adjust the width as needed */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+
+
+
 
 /* Rest of the CSS remains the same */
 
@@ -334,9 +360,9 @@ form input[type="submit"]:hover {
 // Message Form
 
 .MessageForm-wrapper {
-  background-color: #444;
+  background-color: #00022f;
   padding: 20px;
-  border: 2px solid #2ecc71;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   width: 300px;
   height: 200px;
