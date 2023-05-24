@@ -1,12 +1,13 @@
-// ChatShow.js
 import React, { useState, useEffect } from "react";
 import MessageForm from "./MessageForm";
 import MessageTile from "./MessageTile";
+import UserInformation from "./UserInformation";
 
 const ChatShow = (props) => {
     const [chatShow, setChatShow] = useState({
         id: "",
         messages: [],
+        otherUser: {},
     });
 
     const [users, setUsers] = useState({}); // State to store user data
@@ -21,7 +22,6 @@ const ChatShow = (props) => {
             throw error;
         }
         const body = await response.json();
-        console.log(body);
         setChatShow(body.chat);
         } catch (err) {
         console.error(`Error in fetch: ${err.message}`);
@@ -37,7 +37,6 @@ const ChatShow = (props) => {
             throw error;
         }
         const body = await response.json();
-        console.log(body);
         const usersData = {};
         body.users.forEach((user) => {
             usersData[user.id] = user; // Store user data in an object with user id as the key
@@ -92,17 +91,27 @@ const ChatShow = (props) => {
         <p>Don't be shy, introduce yourself!</p>
         );
 
-    return (
-        <div className="show-page">
-        <h2 className="show-title">Chat It Up!</h2>
-        <MessageForm
-            handleMessageSubmit={handleMessageSubmit}
-            messages={chatShow.messages}
-        />
-        <ul>{messageList}</ul>
-        </div>
-    );
-};
+
+        return (
+            <div className="show-page">
+                <h2 className="show-title">Chat It Up!</h2>
+                <div className="grid-container">
+                    <div className="grid-x grid-margin-x">
+                    <div className="cell medium-6">
+                        <UserInformation user={chatShow.otherUser} />
+                    </div>
+                    <div className="cell medium-6">
+                        <MessageForm
+                        handleMessageSubmit={handleMessageSubmit}
+                        messages={chatShow.messages}
+                        />
+                    </div>
+                    </div>
+                </div>
+                <ul>{messageList}</ul>
+                </div>
+            );
+}
 
 export default ChatShow;
 
