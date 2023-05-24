@@ -54,18 +54,17 @@ const HomePage = () => {
 
 
     return (
-        <div className="homepage cell small-12">
+        <div className="homepage cell small-12 grid-x align-middle">
             {redirectToChat && <Redirect to={`/chats/${chat.id}`} />}
-        {/* <div className="grid-x">
-        <div className="cell small-12"> */}
-            <h1 className="homepage-title">SWOLmate</h1>
-            <h3 className="homepage-subtitle">Find your perfect gym buddy!</h3>
-            <h5 className="homepage-subtitle">Created by David Thomas</h5>
-            <img src="https://i.imgur.com/efGAkY0.jpg" alt="gym image" />
-            <GoogleMap users={users} chat={chat} handleChatRequest={handleChatRequest} />
-        {/* </div> */}
-        
-            
+            <div className="cell small-6">
+                <img src="https://i.imgur.com/eR3GGlP.png" alt="swolmate friends" />
+            </div>
+            <div className="cell small-6">
+                <img src="https://i.imgur.com/Vi6xRid.png" alt="swolmate info" style={{ marginTop: '-20px' }} />
+            </div>
+            <div className="cell small-12">
+                <GoogleMap users={users} chat={chat} handleChatRequest={handleChatRequest} />
+            </div>
         </div>
     );
 };

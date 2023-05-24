@@ -9,7 +9,7 @@ body {
 
 /* Background and text colors */
 body {
-  background-color: #333;
+  background-color: #000000;
   color: #fff;
 }
 
@@ -119,13 +119,13 @@ form input[type="submit"]:hover {
 /* Topbar styling */
 
 .top-bar {
-  background-color: #2ecc71;
+  background-color: #000000;
   color: #fff;
   border-bottom: 2px solid #ccc;
 }
 
 .top-bar .menu {
-  background-color: #2ecc71;
+  background-color: #000000;
 }
 
 .top-bar-left {
@@ -166,6 +166,12 @@ form input[type="submit"]:hover {
   color: #007f5f;
 }
 
+.sign-button {
+  background-color: #2ecc71; /* Green button background */
+  color: #fff; /* White button text */
+}
+
+
 // Show Page
 
 .show-title {
@@ -176,12 +182,13 @@ form input[type="submit"]:hover {
 }
 
 .message-box {
-  background-color: #444;
+  background-color: #00022f;
   color: #fff;
   padding: 10px;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  border: 2px solid #2ecc71;
 }
 
 .message-box .profile-pic {
@@ -244,11 +251,11 @@ form input[type="submit"]:hover {
 /////User Tile
 
 .user-tile {
-  background-color: white;
+  background-color: #00022f;
   padding: 10px;
   margin: 10px;
-  color: green;
-  border: 2px solid blue;
+  color: rgb(255, 255, 255);
+  border: 2px solid #2ecc71;
   display: flex;
   align-items: center;
 }
@@ -278,17 +285,18 @@ form input[type="submit"]:hover {
 //// Result Tile
 
 .result-tile {
-  background-color: white;
+  background-color: #00022f;
   padding: 10px;
   margin: 10px;
-  color: green;
-  border: 2px solid blue;
+  color: rgb(255, 255, 255);
+  border: 2px solid #2ecc71;
 }
 
 // Users and Results
 
 .results-main {
   display: flex;
+  padding-top: 20px;
 }
 
 .result-list-container {
@@ -308,6 +316,13 @@ form input[type="submit"]:hover {
 .map-search-container {
   max-width: 500px; /* Adjust the value as needed */
   margin: 0 auto; /* Center the container horizontally */
+  // background-color: #00117e;
+}
+
+.homepage-googlemap-section {
+  background-color: #00022f;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 // Message Form
@@ -459,11 +474,11 @@ form input[type="submit"]:hover {
 }
 
 .chat-list .chat-item {
-  background-color: #e6eaf0;
-  color: #2ecc71;
+  background-color: #00022f;
+  color: #ffffff;
   padding: 10px;
   margin-bottom: 10px;
-  border: 2px solid black;
+  border: 2px solid #2ecc71;
   border-radius: 5px;
   max-width: 30%; /* Adjust the value as per your preference */
   margin-left: auto;
