@@ -24,9 +24,9 @@ const UserTile = (props) => {
                 {chat && <Redirect to={`/chats/${chat.id}`} />}
             </div>
             <div className="user-image">
-                <img src={user.imageUrl} alt="Profile" />
+                <img src={user.imageUrl || "https://i.imgur.com/cFrP4WI.png"} alt="Profile" />
             </div>
-            </div>
+        </div>
         );
 }
 
