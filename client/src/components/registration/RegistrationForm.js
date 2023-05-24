@@ -158,7 +158,13 @@ const RegistrationForm = () => {
         <div>
           <label>
             Pronouns
-            <input type="text" name="pronouns" value={userPayload.pronouns} onChange={onInputChange} />
+            <select name="pronouns" value={userPayload.pronouns} onChange={onInputChange}>
+              <option value="">Select pronouns</option>
+              <option value="he/him">He/Him</option>
+              <option value="she/her">She/Her</option>
+              <option value="they/them">They/Them</option>
+              <option value="n/a">Prefer Not To Say</option>
+            </select>
             <FormError error={errors.pronouns} />
           </label>
         </div>
