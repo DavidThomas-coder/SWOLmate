@@ -1,4 +1,3 @@
-// ChatShow.js
 import React, { useState, useEffect } from "react";
 import MessageForm from "./MessageForm";
 import MessageTile from "./MessageTile";
@@ -94,12 +93,12 @@ const ChatShow = (props) => {
 
     return (
         <div className="show-page">
-        <h2 className="show-title">Chat It Up!</h2>
-        <MessageForm
-            handleMessageSubmit={handleMessageSubmit}
-            messages={chatShow.messages}
-        />
-        <ul>{messageList}</ul>
+            <h2 className="show-title">Chat It Up!</h2>
+            <MessageForm
+                handleMessageSubmit={handleMessageSubmit}
+                messages={chatShow.messages}
+            />
+            <ul>{messageList}</ul>
         </div>
     );
 };
