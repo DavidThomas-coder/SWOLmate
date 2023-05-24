@@ -9,7 +9,7 @@ const MessageTile = (props) => {
                 {user && (
                 <div className="user-info">
                     <p>{user.firstName}</p>
-                    <img src={user.imageUrl} alt="Profile" />
+                    <img src={user.imageUrl || "https://i.imgur.com/cFrP4WI.png"} alt="Profile" />
                 </div>
                 )}
                 <p className="message-body">{message.messageBody}</p>
