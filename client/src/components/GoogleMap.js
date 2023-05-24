@@ -95,12 +95,14 @@ const GoogleMap = (props) => {
 
     return (
         <>
-            <h1>Find Places Near You!</h1>
+        <div className="homepage-googlemap-section">
+            <h1>Gyms In Your Area</h1>
             <p>We're showing you gyms by default, but search for anything you'd like!</p>
             <div className="map-search-container">
                 <MapSearch setSearchQuery={setSearchQuery} />
             </div>
             <div id="map" style={{ height: 400, maxWidth: '100%', margin: '0 auto', marginTop: '20px', marginLeft: '40px', marginRight: '40px' }}></div>
+        </div>
             <div className="results-main grid-x grid-margin-x">
                 <div className="cell medium-6">
                     <div className="result-list-container">
