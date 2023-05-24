@@ -96,6 +96,12 @@ const GoogleMap = (props) => {
     return (
         <>
         <div className="homepage-googlemap-section">
+                <div className="user-tiles-container">
+                        <h2>SWOLmate Users Near You!</h2>
+                    <div className="grid-x grid-margin-x small-up-1 medium-up-3">
+                        {userTiles}
+                    </div>
+                </div>
             <h1>Gyms In Your Area</h1>
             <p>We're showing you gyms by default, but search for anything you'd like!</p>
             <div className="map-search-container">
@@ -103,17 +109,13 @@ const GoogleMap = (props) => {
             </div>
             <div id="map" style={{ height: 400, maxWidth: '100%', margin: '0 auto', marginTop: '20px', marginLeft: '40px', marginRight: '40px' }}></div>
         </div>
-            <div className="results-main grid-x grid-margin-x">
+            <div className="results-main">
                 <div className="cell medium-6">
                     <div className="result-list-container">
                         <h2>Search Results:</h2>
-                        <ResultList searchResults={searchResults} />
-                    </div>
-                </div>
-                <div className="cell medium-6">
-                    <div className="user-tiles-container">
-                        <h2>SWOLmate Users Near You!</h2>
-                        {userTiles}
+                            <div className="grid-x grid-margin-x small-up-1 medium-up-3">
+                                <ResultList searchResults={searchResults} />
+                            </div>
                     </div>
                 </div>
             </div>
