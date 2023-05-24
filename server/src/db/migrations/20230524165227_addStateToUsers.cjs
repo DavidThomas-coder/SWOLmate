@@ -7,7 +7,7 @@
  */
 exports.up = async (knex) => {
     return knex.schema.alterTable("users", (table) => {
-        table.string("imageUrl")
+        table.string("state")
     })
 }
 
@@ -16,6 +16,6 @@ exports.up = async (knex) => {
  */
 exports.down = (knex) => {
     return knex.schema.table("users", (table) => {
-        table.dropColumn("imageUrl")
+        table.dropColumn("state")
     })
 }

@@ -27,7 +27,7 @@ const TopBar = ({ user }) => {
     <div className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text">SWOLmate</li>
+          <li className="menu-logo"><img src="https://i.imgur.com/HYVGKIK.png" /></li>
           <li>
             <Link to="/">Home</Link>
           </li>
