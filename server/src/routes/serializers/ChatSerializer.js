@@ -19,6 +19,7 @@ class ChatSerializer {
         relatedUsers.forEach((relatedUser) => {
             if (relatedUser.id !== currentUser.id) {
                 serializedChat.title = relatedUser.firstName
+                serializedChat.otherUser = relatedUser
             }
         })
 

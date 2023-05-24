@@ -7,7 +7,7 @@ const ChatShow = (props) => {
     const [chatShow, setChatShow] = useState({
         id: "",
         messages: [],
-        userId: "",
+        otherUser: {},
     });
 
     const [users, setUsers] = useState({}); // State to store user data
@@ -96,7 +96,7 @@ const ChatShow = (props) => {
         <div className="show-page">
         <h2 className="show-title">Chat It Up!</h2>
         <UserInformation 
-            user={chatShow.userId}
+            user={chatShow.otherUser}
         />
         <MessageForm
             handleMessageSubmit={handleMessageSubmit}
