@@ -50,6 +50,7 @@ const UserProfile = ({ user }) => {
             <p>Your Age: {user.age}</p>
             <p>Your Pronouns: {user.pronouns}</p>
             <p>Your City/Neighborhood: {user.cityNeighborhood}</p>
+            <p>Your State: {user.state}</p>
             <p>Your Experience Level: {user.experienceLevel}</p>
             </div>
         </div>

@@ -16,6 +16,8 @@ const UserTile = (props) => {
                 <p>{user.age}</p>
                 <p>{user.pronouns}</p>
                 <p>{user.cityNeighborhood}</p>
+                <p>{user.state}</p>
+                <p>{user.experienceLevel}</p>
                 <button onClick={handleClick}>
                 Message This User!
                 </button>
