@@ -170,14 +170,15 @@ const RegistrationForm = () => {
         </div>
         <div>
           <label>
-            City/Neighborhood
+            City
             <input type="text" name="cityNeighborhood" value={userPayload.cityNeighborhood} onChange={onInputChange} />
             <FormError error={errors.cityNeighborhood} />
           </label>
         </div>
         <div>
           <label>
-            Give a brief description of your "Gym Experience Level".  Are you new?  Have you been lifting for a year or two?
+            Give a brief description of your experience level in the gym.  Are you new?  Have you been lifting for a year or two?<br></br>  
+            Are you looking to find a buddy before jumping in for the first time?
             <input type="text" name="experienceLevel" value={userPayload.experienceLevel} onChange={onInputChange} />
             <FormError error={errors.experienceLevel} />
           </label>
