@@ -97,13 +97,13 @@ const GoogleMap = (props) => {
         <>
         <div className="homepage-googlemap-section">
                 <div className="user-tiles-container">
-                        <h2>SWOLmate Users Near You!</h2>
+                        <h2>SWOLmate Users Near You</h2>
                     <div className="grid-x grid-margin-x small-up-1 medium-up-3">
                         {userTiles}
                     </div>
                 </div>
-            <h1>Gyms In Your Area</h1>
-            <p>We're showing you gyms by default, but search for anything you'd like!</p>
+            <h1>Get Active In Your Area</h1>
+            <p>We're showing you gyms by default, but choose what you're looking for below!</p>
             <div className="map-search-container">
                 <MapSearch setSearchQuery={setSearchQuery} />
             </div>
