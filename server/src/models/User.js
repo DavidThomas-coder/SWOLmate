@@ -77,14 +77,26 @@ class User extends uniqueFunc(Model) {
           to: "messages.userId"
         }
       },
-      groups: {
+      ownedGroups: {
         relation: Model.HasManyRelation,
         modelClass: Group,
         join: {
           from: "users.id",
           to: "groups.userId"
         }
-      }
+      },
+      // groups: {
+      //   relation: Model.ManyToManyRelation,
+      //   modelClass: Group,
+      //   join: {
+      //     from: "users.id",
+      //     through: {
+      //       from: "memberships.userId",
+      //       to: "memberships.groupId"
+      //     },
+      //     to: "groups.id"
+      //   }
+      // }
     }
   }
 }

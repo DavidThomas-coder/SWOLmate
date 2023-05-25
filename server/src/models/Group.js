@@ -10,7 +10,7 @@ class Group extends Model {
             type: "object",
             required: ["ownerId", "groupName"],
             properties: {
-                ownerId: { type: "integer" },
+                ownerId: { type: ["integer", "string"] },
                 groupName: { type: "string" }
             }
         }

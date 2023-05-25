@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const GroupForm = () => {
+const GroupForm = (props) => {
     const [newGroup, setNewGroup] = useState({
         groupName:"",
     })
@@ -17,12 +17,13 @@ const GroupForm = () => {
         event.preventDefault();
     
         try {
+
             const response = await fetch('/api/v1/groups', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ group: newGroup }),
+                body: JSON.stringify({ groupName: newGroup.groupName }),
             });
     
             if (response.ok) {
@@ -33,7 +34,7 @@ const GroupForm = () => {
         } catch (error) {
             console.log("Error in fetch:", error.message);
         }
-    };
+    }
     
 
     return (
