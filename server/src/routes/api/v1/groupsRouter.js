@@ -9,7 +9,7 @@ groupsRouter.get("/", async (req, res) => {
     try {
         const groups = await Group.query()
         const serializedGroups = groups.map(group => GroupSerializer.showGroupDetails(group))
-        return res.status(200).json({ groups: groups })
+        return res.status(200).json({ groups: serializedGroups })
     }
     catch(error) {
         return res.status(500).json({ errors: error })

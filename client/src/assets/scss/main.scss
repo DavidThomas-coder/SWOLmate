@@ -373,8 +373,6 @@ form input[type="submit"]:hover {
   margin: 0 auto;
 }
 
-
-
 .MessageForm .error {
   color: #ff0000; /* Red error message color */
   margin-bottom: 10px;
@@ -389,6 +387,61 @@ form input[type="submit"]:hover {
   cursor: pointer;
 }
 
+//// Group Form
+
+.GroupForm-wrapper {
+  background-color: #444;
+  padding: 20px;
+  margin-top: 40px;
+  border: 2px solid #2ecc71;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.GroupForm form {
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.GroupForm form input {
+  background-color: #fff;
+  color: #333;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 80%;
+  height: auto;
+  min-height: 100px;
+  resize: none;
+  box-sizing: border-box;
+  text-align: left;
+  display: block;
+  margin: 0 auto;
+}
+
+.GroupForm .error {
+  color: #ff0000; /* Red error message color */
+  margin-bottom: 10px;
+}
+
+.GroupForm .message-btn {
+  background-color: #2ecc71; /* Green button background */
+  color: #fff; /* White button text */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
 
 

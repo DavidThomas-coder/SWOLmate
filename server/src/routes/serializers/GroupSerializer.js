@@ -1,5 +1,5 @@
 class GroupSerializer {
-    static showGroupDetails(groups) {
+    static showGroupDetails(group) {
         const allowedAttributes = ["id", "ownerId", "groupName"]
         const serializedGroup = {}
         for (const attribute of allowedAttributes) {
