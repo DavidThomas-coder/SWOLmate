@@ -15,6 +15,9 @@ const TopBar = ({ user }) => {
   ];
 
   const authenticatedListItems = [
+    <li key="groupForm">
+      <Link to="/groups">Make A Group</Link>
+    </li>,
     <li key="profile">
       <Link to="/profile">Your Profile</Link>
     </li>,

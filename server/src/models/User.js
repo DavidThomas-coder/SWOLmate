@@ -46,7 +46,7 @@ class User extends uniqueFunc(Model) {
   }
 
   static get relationMappings () {
-    const { Chat, UserChat, Message } = require ("./index.js")
+    const { Chat, UserChat, Message, Group } = require ("./index.js")
 
     return {
       chats: {
@@ -75,6 +75,14 @@ class User extends uniqueFunc(Model) {
         join: {
           from: "users.id",
           to: "messages.userId"
+        }
+      },
+      groups: {
+        relation: Model.HasManyRelation,
+        modelClass: Group,
+        join: {
+          from: "users.id",
+          to: "groups.userId"
         }
       }
     }

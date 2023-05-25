@@ -8,7 +8,7 @@
 exports.up = async (knex) => {
     return knex.schema.createTable("groups", (table) => {
         table.bigIncrements("id")
-        table.integer("ownerId")
+        table.integer("ownerId").notNullable()
         table.string("groupName").notNullable()
         table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
         table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())

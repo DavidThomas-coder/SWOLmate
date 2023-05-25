@@ -12,6 +12,7 @@ import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import UserProfile from "./UserProfile"
 import HomePage from "./HomePage";
 import ChatShow from "./ChatShow";
+import GroupForm from "./GroupForm";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -38,6 +39,7 @@ const App = (props) => {
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/chats/:id" component={ChatShow} />
+        <AuthenticatedRoute exact path="/groups" component={GroupForm} user={currentUser} />
         <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} />
       </Switch>
     </Router>
