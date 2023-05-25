@@ -65,6 +65,7 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 button:hover {
@@ -174,6 +175,7 @@ form input[type="submit"]:hover {
 .sign-button {
   background-color: #2ecc71; /* Green button background */
   color: #fff; /* White button text */
+  border-radius: 8px;
 }
 
 
@@ -301,6 +303,7 @@ form input[type="submit"]:hover {
 
 .user-info button {
   margin-top: 10px;
+  border-radius: 8px;
 }
 
 .user-image {
@@ -413,6 +416,7 @@ form input[type="submit"]:hover {
   padding: 8px 16px;
   border-radius: 3px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 
