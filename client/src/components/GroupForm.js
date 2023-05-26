@@ -1,10 +1,32 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { Redirect } from "react-router-dom"
 
 const GroupForm = (props) => {
     const [newGroup, setNewGroup] = useState({
         groupName:"",
     })
     const [errors, setErrors] = useState({})
+    const [redirect, setRedirect] = useState(false)
+    const [groups, setGroups] = useState([])
+    const [groupId, setGroupId] = useState(null)
+
+    const fetchGroups = async () => {
+        try {
+            const response = await fetch("/api/v1/groups")
+            if (response.ok) {
+                const data = await response.json()
+                setGroups(data.groups)
+            } else {
+                console.error("Failed to fetch groups:", response.statusText)
+            }
+        } catch (error) {
+            console.error("Error fetching users:", error)
+        }
+    }
+
+    useEffect(() => {
+        fetchGroups()
+    }, [])
 
     const handleGroupChange = (event) => {
         setNewGroup({
@@ -28,6 +50,9 @@ const GroupForm = (props) => {
     
             if (response.ok) {
                 const body = await response.json();
+                const { id} = body.group
+                setGroupId(id)
+                setRedirect(true)
             } else {
                 console.log("Failed to add group:", response.statusText);
             }
@@ -56,7 +81,10 @@ const GroupForm = (props) => {
                 <button type="submit" className="message-btn">
                     submit
                 </button>
-            </form>
+                {redirect && groupId && (
+                    <Redirect to={`/groups/${groupId}`} /> // Redirect only when redirect is true and groupId is defined
+                )}
+                </form>
         </div>
     )
 }
