@@ -53,6 +53,7 @@ const GroupShow = (props) => {
     return (
         <div className="show-page">
             <h2 className="show-title">{groupShow.groupName}</h2>
+            <h3>**Adding Users In Progress**</h3>
             <button onClick={handleAddUser}>Add User</button>
         </div>
     )
