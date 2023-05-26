@@ -50,7 +50,7 @@ const GroupForm = (props) => {
     
             if (response.ok) {
                 const body = await response.json();
-                const { id} = body.group
+                const { id } = body.group
                 setGroupId(id)
                 setRedirect(true)
             } else {
