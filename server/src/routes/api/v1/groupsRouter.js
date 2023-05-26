@@ -20,10 +20,10 @@ groupsRouter.get("/:id", async (req, res) => {
     const { id } = req.params
         try {
             const group = await Group.query().findById(id)
-            const serializedGroup = await GroupSerializer.showGroupDetails(group)
+            const serializedGroup = GroupSerializer.showGroupDetails(group)
             return res.status(200).json({ group: serializedGroup })
         } catch (error) {
-            return res.status(500).jason({ errors: error })
+            return res.status(500).json({ errors: error })
         }
     })
 
