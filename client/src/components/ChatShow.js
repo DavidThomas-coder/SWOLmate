@@ -91,7 +91,6 @@ const ChatShow = (props) => {
         <p>Don't be shy, introduce yourself!</p>
         );
 
-
         return (
             <div className="show-page">
                 <h2 className="show-title">Chat It Up!</h2>
@@ -112,6 +111,7 @@ const ChatShow = (props) => {
                 </div>
             );
 }
+
 
 export default ChatShow;
 
