@@ -65,6 +65,7 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 button:hover {
@@ -174,6 +175,7 @@ form input[type="submit"]:hover {
 .sign-button {
   background-color: #2ecc71; /* Green button background */
   color: #fff; /* White button text */
+  border-radius: 8px;
 }
 
 
@@ -225,6 +227,32 @@ form input[type="submit"]:hover {
   flex-grow: 1;
 }
 
+.user-information {
+  background-color: #00022f;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  border: 2px solid #ffffff;
+}
+
+.user-info-left {
+  flex: 1;
+}
+
+.user-info-right {
+  margin-left: 10px;
+}
+
+.profile-image {
+  width: 180px; /* Adjust the width as needed */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+
+
+
 
 /* Rest of the CSS remains the same */
 
@@ -275,6 +303,7 @@ form input[type="submit"]:hover {
 
 .user-info button {
   margin-top: 10px;
+  border-radius: 8px;
 }
 
 .user-image {
@@ -334,9 +363,9 @@ form input[type="submit"]:hover {
 // Message Form
 
 .MessageForm-wrapper {
-  background-color: #444;
+  background-color: #00022f;
   padding: 20px;
-  border: 2px solid #2ecc71;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   width: 300px;
   height: 200px;
@@ -385,6 +414,7 @@ form input[type="submit"]:hover {
   padding: 8px 16px;
   border-radius: 3px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 //// Group Form
