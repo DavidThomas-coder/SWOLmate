@@ -91,9 +91,17 @@ const ChatShow = (props) => {
         <p>Don't be shy, introduce yourself!</p>
         );
 
-        return (
-            <div className="show-page">
-                <h2 className="show-title">Chat It Up!</h2>
+    return (
+        <div className="show-page">
+            <div className="cell small-12 grid-x align-middle">
+                <div className="cell small-6">
+                    <img src="https://i.imgur.com/qVSpi2V.png" alt="swolmate info" />
+                </div>
+                <div className="cell small-6">
+                    <img src="https://i.imgur.com/nOqebfp.png" alt="swolmate friends" />
+                </div>
+            </div>
+            <div className="homepage-googlemap-section">
                 <div className="grid-container">
                     <div className="grid-x grid-margin-x">
                     <div className="cell medium-6">
@@ -106,10 +114,11 @@ const ChatShow = (props) => {
                         />
                     </div>
                     </div>
+                    <ul>{messageList}</ul>
                 </div>
-                <ul>{messageList}</ul>
-                </div>
-            );
+            </div>
+        </div>
+    );
 }
 
 
