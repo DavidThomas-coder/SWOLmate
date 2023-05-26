@@ -95,10 +95,10 @@ const ChatShow = (props) => {
         <div className="show-page">
             <div className="cell small-12 grid-x align-middle">
                 <div className="cell small-6">
-                    <img src="https://i.imgur.com/zH3z4OD.png" alt="swolmate info" />
+                    <img src="https://i.imgur.com/qVSpi2V.png" alt="swolmate info" />
                 </div>
                 <div className="cell small-6">
-                    <img src="https://i.imgur.com/nOqebfp.png" alt="swolmate friends" style={{ marginRight: '-20px' }} />
+                    <img src="https://i.imgur.com/nOqebfp.png" alt="swolmate friends" />
                 </div>
             </div>
             <div className="homepage-googlemap-section">

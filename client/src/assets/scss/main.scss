@@ -494,12 +494,14 @@ form input[type="submit"]:hover {
 }
 
 .userProfile .profile-info {
-  background-color: #444;
-  padding: 20px;
-  margin: 20px auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
-  display: inline-block;
-  color: #ffffff; /* Set the default text color for the box */
+  background-color: #00022f;
+  padding: 10px;
+  margin: 10px;
+  color: rgb(255, 255, 255);
+  border: 2px solid #2ecc71;
+  display: flex;
+  flex-direction: column; /* Set the flex-direction to column */
+  align-items: flex-start; /* Align items to the start of the container */
 }
 
 .userProfile h1 {
@@ -559,7 +561,7 @@ form input[type="submit"]:hover {
 }
 
 .chat-list h2 {
-  color: #2ecc71;
+  color: #ffffff;
 }
 
 .chat-list .chat-item {
@@ -581,7 +583,7 @@ form input[type="submit"]:hover {
 }
 
 .group-list h2 {
-  color: #2ecc71;
+  color: #ffffff;
 }
 
 .group-list .group-item {
