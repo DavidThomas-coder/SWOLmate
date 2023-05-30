@@ -502,6 +502,8 @@ form input[type="submit"]:hover {
   display: flex;
   flex-direction: column; /* Set the flex-direction to column */
   align-items: flex-start; /* Align items to the start of the container */
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .userProfile h1 {

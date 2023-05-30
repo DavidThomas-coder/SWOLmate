@@ -66,25 +66,27 @@ const UserProfile = ({ user }) => {
                 </div>
             </div>
             <div className="homepage-googlemap-section">
-                <div className="grid-x">
-                    <div className="cell medium-6">
-                        <div className="profile-box cell rounded-corner">
-                            <ProfileImage className="profile-picture" />
-                        </div>
-                    </div>
-                    <div className="cell medium-6 profile-info">
-                        <p>Your Name: {user.firstName}</p>
-                        <p>Your Email: {user.email}</p>
-                        <p>Your Age: {user.age}</p>
-                        <p>Your Pronouns: {user.pronouns}</p>
-                        <p>Your City/Neighborhood: {user.cityNeighborhood}</p>
-                        <p>Your State: {user.state}</p>
-                        <p>Your Experience Level: {user.experienceLevel}</p>
-                        <div className="user-image">
-                            <img src={user.imageUrl || "https://i.imgur.com/cFrP4WI.png"} alt="Profile" />
-                        </div>
-                    </div>
+            <div class="grid-x">
+            <div class="cell medium-6">
+                <div class="profile-box cell rounded-corner">
+                <ProfileImage class="profile-picture" />
                 </div>
+            </div>
+            <div class="cell medium-6">
+                <div class="profile-info">
+                <p>Your Name: {user.firstName}</p>
+                <p>Your Email: {user.email}</p>
+                <p>Your Age: {user.age}</p>
+                <p>Your Pronouns: {user.pronouns}</p>
+                <p>Your City/Neighborhood: {user.cityNeighborhood}</p>
+                <p>Your State: {user.state}</p>
+                <p>Your Experience Level: {user.experienceLevel}</p>
+                <div class="user-image">
+                    <img src={user.imageUrl || "https://i.imgur.com/cFrP4WI.png"} alt="Profile" />
+                </div>
+                </div>
+            </div>
+            </div>
                 <div className="grid-container">
                     <div className="grid-x grid-margin-x align-center">
                         <div className="cell medium-6">
