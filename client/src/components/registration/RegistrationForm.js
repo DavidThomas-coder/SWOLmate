@@ -14,6 +14,7 @@ const RegistrationForm = () => {
     pronouns: "",
     cityNeighborhood: "",
     experienceLevel: "",
+    checklistItems: [],
   });
 
   const [errors, setErrors] = useState({});
@@ -95,11 +96,28 @@ const RegistrationForm = () => {
   };
 
   const onInputChange = (event) => {
-    setUserPayload({
-      ...userPayload,
-      [event.currentTarget.name]: event.currentTarget.value,
-    });
+    const { name, type, value, checked } = event.currentTarget;
+  
+    if (type === 'checkbox') {
+      if (checked) {
+        setUserPayload((prevPayload) => ({
+          ...prevPayload,
+          [name]: [...prevPayload[name], value],
+        }));
+      } else {
+        setUserPayload((prevPayload) => ({
+          ...prevPayload,
+          [name]: prevPayload[name].filter((item) => item !== value),
+        }));
+      }
+    } else {
+      setUserPayload((prevPayload) => ({
+        ...prevPayload,
+        [name]: value,
+      }));
+    }
   };
+  
 
   if (shouldRedirect) {
     location.href = "/";
@@ -241,6 +259,123 @@ const RegistrationForm = () => {
             <input type="text" name="experienceLevel" value={userPayload.experienceLevel} onChange={onInputChange} />
             <FormError error={errors.experienceLevel} />
           </label>
+        </div>
+        <h4>Set your goals!  Check all that apply.</h4>
+        <div className="grid-x">
+          <div className="cell small-4">
+            <div>
+              <label>
+                <span className="label-text">Build Muscle</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 1"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 1")}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span className="label-text">Lose Fat</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 2"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 2")}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span className="label-text">Lift Heavier</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 3"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 3")}
+                />
+              </label>
+            </div>
+          </div>
+          <div className="cell small-4">
+            <div>
+              <label>
+                <span className="label-text">Build Cardio Endurance</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 4"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 4")}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span className="label-text">Training for a 5k</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 5"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 5")}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span className="label-text">Improve General Health</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 6"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 6")}
+                />
+              </label>
+            </div>
+          </div>
+          <div className="cell small-4">
+            <div>
+              <label>
+                <span className="label-text">Get Your Daily Steps</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 7"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 7")}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span className="label-text">Build Confidence</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 8"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 8")}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span className="label-text">Sports Training</span>
+                <input
+                  type="checkbox"
+                  name="checklistItems"
+                  value="Checklist Item 9"
+                  onChange={onInputChange}
+                  checked={userPayload.checklistItems.includes("Checklist Item 9")}
+                />
+              </label>
+            </div>
+          </div>
         </div>
         <div>
           <input type="submit" className="button" value="Register" />
