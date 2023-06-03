@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const GroupShow = (props) => {
     const [groupShow, setGroupShow] = useState({
@@ -6,6 +7,22 @@ const GroupShow = (props) => {
         groupName: "",
         notes: [],
     })
+    const [userChats, setUserChats] = useState([])
+
+    const getUserChats = async () => {
+        try {
+        const response = await fetch(`/api/v1/chats`);
+        if (!response.ok) {
+            const errorMessage = `${response.status} (${response.statusText})`;
+            const error = new Error(errorMessage);
+            throw error;
+        }
+        const chatBody = await response.json();
+        setUserChats(chatBody.chats);
+        } catch (error) {
+        console.error(`Error in fetch: ${error.message}`);
+        }
+    };
 
     const getGroup = async () => {
         const groupId = props.match.params.id
@@ -24,6 +41,7 @@ const GroupShow = (props) => {
     }
 
     useEffect(() => {
+        getUserChats()
         getGroup()
     }, [])
 
@@ -50,11 +68,20 @@ const GroupShow = (props) => {
         }
     }
 
+    const chatsArray = userChats.map((chat) => {
+        return (
+        <div key={chat.id}className="chat-item">
+            <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
+        </div>
+        )
+    })
+        
+
     return (
         <div className="show-page">
             <h2 className="show-title">{groupShow.groupName}</h2>
-            <h3>**Adding Users In Progress**</h3>
-            <button onClick={handleAddUser}>Add User</button>
+            <h3>Users You've Messaged With:</h3>
+                {chatsArray}
         </div>
     )
 }
