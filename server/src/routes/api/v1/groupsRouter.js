@@ -1,9 +1,12 @@
 import express from "express"
 import GroupSerializer from "../../serializers/GroupSerializer.js"
+import groupsUsersRouter from "./groupsUsersRouter.js"
 
 import { Group } from "../../../models/index.js"
 
 const groupsRouter = new express.Router()
+
+groupsRouter.use("/:id/users", groupsUsersRouter)
 
 groupsRouter.get("/", async (req, res) => {
     try {
