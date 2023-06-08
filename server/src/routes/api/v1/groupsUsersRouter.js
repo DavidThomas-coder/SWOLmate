@@ -1,11 +1,24 @@
 import express from "express"
 import GroupSerializer from "../../serializers/GroupSerializer.js"
+import UserSerializer from "../../serializers/UserSerializer.js"
 import { Group, User, Membership } from "../../../models/index.js"
 
 const groupsUsersRouter = new express.Router()
 
+groupsUsersRouter.get("/", async (req, res) => {
+    try {
+        const users = await User.query()
+        const serializedUsers = users.map(user => UserSerializer.showUserDetails(user))
+        return res.status(200).json({ users: serializedUsers })
+    } catch (error) {
+        return res.status(500).json({ errors: error })
+    }
+})
+
+
 groupsUsersRouter.post("/", async (req, res) => {
     const { groupId, userId } = req.body
+    console.log(req.body)
 
     try {
         const group = await Group.query().findById(groupId)

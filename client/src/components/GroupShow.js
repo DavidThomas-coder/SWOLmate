@@ -50,13 +50,14 @@ const GroupShow = (props) => {
 
         try {
         const groupId = groupShow.id
+        // console.log(groupId)
         const response = await fetch(`/api/v1/groups/${groupId}/users`, {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
             },
             body: JSON.stringify({ userId }),
-        })
+        }) 
         if (!response.ok) {
             const errorMessage = `${response.status} (${response.statusText})`
             const error = new Error(errorMessage)
