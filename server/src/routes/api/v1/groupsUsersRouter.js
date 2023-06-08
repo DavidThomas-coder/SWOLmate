@@ -15,9 +15,9 @@ groupsUsersRouter.get("/", async (req, res) => {
     }
 })
 
-
 groupsUsersRouter.post("/", async (req, res) => {
     const { groupId, userId } = req.body
+    console.log("BELOW IS REQ BODY")
     console.log(req.body)
 
     try {

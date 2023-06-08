@@ -46,28 +46,36 @@ const GroupShow = (props) => {
     }, [])
 
     const handleAddUser = async (event, userId) => {
-        event.preventDefault()
-
-        try {
-        const groupId = groupShow.id
-        // console.log(groupId)
-        const response = await fetch(`/api/v1/groups/${groupId}/users`, {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ userId }),
-        }) 
-        if (!response.ok) {
-            const errorMessage = `${response.status} (${response.statusText})`
-            const error = new Error(errorMessage)
-            throw error
-        }
-        getGroup()
-        } catch (error) {
-        console.error(`Error in fetch: ${error.message}`)
-        }
-    }
+        event.preventDefault();
+        
+            try {
+            const groupId = groupShow.id;
+        
+            const response = await fetch(`/api/v1/groups/${groupId}/users`, {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ userId }),
+            });
+        
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
+            }
+        
+            // Assuming the response contains the updated group information
+            const data = await response.json();
+            const updatedGroup = data.group;
+        
+            // Update state
+            setGroupShow(updatedGroup);
+        
+            // Show a message or error
+            console.log("User added to group successfully!");
+            } catch (error) {
+            console.error("Error adding user:", error.message);
+            }
+        };
 
     const chatsArray = userChats.map((chat) => {
         return (
