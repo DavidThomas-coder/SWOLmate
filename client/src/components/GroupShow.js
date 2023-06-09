@@ -56,7 +56,7 @@ const GroupShow = (props) => {
                 headers: {
                 "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ userId }),
+                body: JSON.stringify({ groupId, userId }),
             });
         
             if (!response.ok) {
@@ -75,14 +75,14 @@ const GroupShow = (props) => {
             } catch (error) {
             console.error("Error adding user:", error.message);
             }
-        };
+        };      
 
     const chatsArray = userChats.map((chat) => {
         return (
         <div key={chat.id} className="chat-item">
             <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
             <button
-            onClick={(event) => handleAddUser(event, chat.userId)}
+            onClick={(event) => handleAddUser(event, chat.otherUser.id)}
             className="invite-button"
             >
             Invite
