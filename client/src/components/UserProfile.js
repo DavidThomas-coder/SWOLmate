@@ -22,9 +22,9 @@ const UserProfile = ({ user }) => {
         }
     };
 
-    const getUserGroups = async () => {
+    const getUserGroups = async (userId) => {
         try {
-            const response = await fetch(`/api/v1/groups`)
+            const response = await fetch(`/api/v1/users/${userId}/groups`)
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 const error = new Error(errorMessage)
@@ -35,12 +35,12 @@ const UserProfile = ({ user }) => {
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
         }
-    }
+    }    
 
     useEffect(() => {
         getUserChats()
-        getUserGroups()
-    }, [])
+        getUserGroups(user.id) // pass user.id as argument
+    }, [user.id])    
 
     const chatsArray = userChats.map((chat) => {
         return (
