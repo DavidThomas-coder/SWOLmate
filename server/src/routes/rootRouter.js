@@ -13,7 +13,7 @@ const rootRouter = new express.Router();
 rootRouter.use("/", clientRouter);
 rootRouter.use("/api/v1/user-sessions", userSessionsRouter);
 rootRouter.use("/api/v1/users", usersRouter)
-rootRouter.use("/api/v1/users/groups", usersGroupsRouter)
+rootRouter.use("/api/v1/users", usersGroupsRouter)
 rootRouter.use("/api/v1/chats", chatsRouter)
 rootRouter.use("/api/v1/groups", groupsRouter)
 rootRouter.use("/api/v1/groups/users", groupsUsersRouter)

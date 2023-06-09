@@ -9,33 +9,36 @@ const UserProfile = ({ user }) => {
 
     const getUserChats = async () => {
         try {
-        const response = await fetch(`/api/v1/chats`);
-        if (!response.ok) {
-            const errorMessage = `${response.status} (${response.statusText})`;
-            const error = new Error(errorMessage);
-            throw error;
+            const response = await fetch(`/api/v1/chats`);
+            if (!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`;
+                const error = new Error(errorMessage);
+                throw error;
+            }
+            const chatBody = await response.json();
+            // console.log(chatBody); // Add this console log
+            setUserChats(chatBody.chats);
+            } catch (error) {
+            console.error(`Error in fetch: ${error.message}`);
         }
-        const chatBody = await response.json();
-        setUserChats(chatBody.chats);
-        } catch (error) {
-        console.error(`Error in fetch: ${error.message}`);
-        }
-    };
+    };      
 
     const getUserGroups = async (userId) => {
         try {
-            const response = await fetch(`/api/v1/users/${userId}/groups`)
+            const response = await fetch(`/api/v1/users/${userId}/groups`);
             if (!response.ok) {
-                const errorMessage = `${response.status} (${response.statusText})`
-                const error = new Error(errorMessage)
-                throw error
+                const errorMessage = `${response.status} (${response.statusText})`;
+                throw new Error(errorMessage);
             }
-            const groupBody = await response.json()
-            setUserGroups(groupBody.groups)
-        } catch (error) {
-            console.error(`Error in fetch: ${error.message}`)
+            const groupBody = await response.json();
+            console.log("groupBody:", groupBody);
+            const { groups } = groupBody;
+            console.log("groups:", groups);
+            setUserGroups(groups);
+            } catch (error) {
+            console.error(`Error in fetch: ${error.message}`);
         }
-    }    
+    };
 
     useEffect(() => {
         getUserChats()
@@ -44,19 +47,20 @@ const UserProfile = ({ user }) => {
 
     const chatsArray = userChats.map((chat) => {
         return (
-        <div key={chat.id}className="chat-item">
-            <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
-        </div>
-        )
-    })
+            <div key={chat.id} className="chat-item">
+                <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
+            </div>
+        );
+    });      
 
-    const groupsArray = userGroups.map((group) => {
-        return (
-            <div key={group.id}className="group-item">
+    const groupsArray = Array.isArray(userGroups)
+    ? userGroups.map((group) => (
+            <div key={group.id} className="group-item">
                 <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
             </div>
-        )
-    })
+        ))
+    : [];
+
 
     return (
         <div className="userProfile">

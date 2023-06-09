@@ -1,7 +1,6 @@
 import React from "react"
 
 const ResultTile = (props) => {
-    console.log(props)
     return (
         <div className="result-tile cell medium-6">
             <h3>{props.result.name}</h3>
