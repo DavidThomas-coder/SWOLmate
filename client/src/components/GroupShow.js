@@ -50,6 +50,8 @@ const GroupShow = (props) => {
         
             try {
             const groupId = groupShow.id;
+            console.log("groupId:", groupId);
+            console.log("userId:", userId);
         
             const response = await fetch(`/api/v1/groups/${groupId}/users`, {
                 method: "POST",
@@ -75,7 +77,7 @@ const GroupShow = (props) => {
             } catch (error) {
             console.error("Error adding user:", error.message);
             }
-        };      
+    };      
 
     const chatsArray = userChats.map((chat) => {
         return (

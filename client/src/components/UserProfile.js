@@ -103,8 +103,8 @@ const UserProfile = ({ user }) => {
                         </div>
                         <div className="cell medium-6">
                             <div className="group-list">
-                                <h2>Your Groups:</h2>
-                                <div className="grid-x small-up-1 medium-up-3">
+                                <h2>Your Created Groups:</h2>
+                                <div>
                                     {groupsArray}
                                 </div>
                             </div>
