@@ -8,6 +8,7 @@ const GroupShow = (props) => {
         notes: [],
     })
     const [userChats, setUserChats] = useState([])
+    const [groupUsers, setGroupUsers] = useState([]);
 
     const getUserChats = async () => {
         try {
@@ -24,6 +25,20 @@ const GroupShow = (props) => {
         }
     }
 
+    const getGroupUsers = async (groupId) => {
+        try {
+            const response = await fetch(`/api/v1/groups/${groupId}/users`)
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} ${response.statusText}`)
+            }
+            const data = await response.json()
+            const { users } = data
+            setGroupUsers(users)
+            } catch (error) {
+            console.error("Error fetching group users:", error.message)
+            }
+        }
+
     const getGroup = async () => {
         const groupId = props.match.params.id
         try {
@@ -35,21 +50,27 @@ const GroupShow = (props) => {
         }
         const body = await response.json()
         setGroupShow(body.group)
+        getGroupUsers(groupId)
         } catch (error) {
         console.error(`Error in fetch: ${error.message}`)
         }
     }
+
 
     useEffect(() => {
         getUserChats()
         getGroup()
     }, [])
 
+    console.log(groupShow)
+    console.log(groupShow.users)
+
     const handleAddUser = async (event, userId) => {
         event.preventDefault();
         
             try {
             const groupId = groupShow.id;
+            console.log("groupShow", groupShow)
             console.log("groupId:", groupId);
             console.log("userId:", userId);
         
@@ -95,9 +116,17 @@ const GroupShow = (props) => {
 
     return (
         <div className="show-page">
-        <h2 className="show-title">{groupShow.groupName}</h2>
-        <h3>Add A User You've Connected With:</h3>
-        {chatsArray}
+            <h2 className="show-title">{groupShow.groupName}</h2>
+            <h3>Add A User You've Connected With:</h3>
+            {chatsArray}
+            <div className="group-users">
+                <h2>Group Users:</h2>
+                <ul>
+                    {groupUsers.map((user) => (
+                    <li key={user.id}>{user.name}</li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }

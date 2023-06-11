@@ -30,6 +30,21 @@ groupsRouter.get("/:id", async (req, res) => {
         }
     })
 
+groupsRouter.get("/:id/users", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const group = await Group.query().findById(id);
+        if (!group) {
+        return res.status(404).json({ error: "Group not found" });
+        }
+        const users = await group.$relatedQuery("users").select("id", "name");
+        return res.status(200).json({ users });
+    } catch (error) {
+        console.error("Error retrieving group users:", error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
+    });
+
 groupsRouter.post("/", async (req, res) => {
     try {
         const ownerId = req.user.id

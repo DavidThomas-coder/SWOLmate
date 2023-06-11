@@ -20,7 +20,7 @@ class Group extends Model {
         const {User, Membership, Note} = require("./index.js")
 
         return {
-            users: {
+            ownedGroupUsers: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: User,
                 join: {
@@ -44,7 +44,18 @@ class Group extends Model {
                     to: "notes.groupId"
                 }
             },
-            
+            users: {
+                relation: Model.ManyToManyRelation,
+                modelClass: User,
+                join: {
+                    from: "groups.id",
+                    through: {
+                        from: "memberships.groupId",
+                        to: "memberships.userId",
+                    },
+                    to: "users.id",
+                },
+            },
         }
     }
 

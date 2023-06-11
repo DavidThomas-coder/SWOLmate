@@ -5,7 +5,8 @@ import ProfileImage from "./ProfileImage";
 
 const UserProfile = ({ user }) => {
     const [userChats, setUserChats] = useState([])
-    const [userGroups, setUserGroups] = useState([])
+    const [userOwnedGroups, setUserOwnedGroups] = useState([])
+    const [userMemberGroups, setUserMemberGroups] = useState([])
 
     const getUserChats = async () => {
         try {
@@ -32,13 +33,15 @@ const UserProfile = ({ user }) => {
             }
             const groupBody = await response.json();
             console.log("groupBody:", groupBody);
-            const { groups } = groupBody;
-            console.log("groups:", groups);
-            setUserGroups(groups);
+            const { ownedGroups, memberGroups } = groupBody;
+            console.log("ownedGroups:", ownedGroups);
+            console.log("memberGroups:", memberGroups);
+            setUserOwnedGroups(ownedGroups);
+            setUserMemberGroups(memberGroups);
             } catch (error) {
-            console.error(`Error in fetch: ${error.message}`);
+            console.error(`Error in fetch: ${error.message}`);    
         }
-    };
+    }
 
     useEffect(() => {
         getUserChats()
@@ -53,12 +56,20 @@ const UserProfile = ({ user }) => {
         );
     });      
 
-    const groupsArray = Array.isArray(userGroups)
-    ? userGroups.map((group) => (
-            <div key={group.id} className="group-item">
-                <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
-            </div>
-        ))
+    const ownedGroupsArray = Array.isArray(userOwnedGroups)
+    ? userOwnedGroups.map((group) => (
+        <div key={group.id} className="group-item">
+          <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
+        </div>
+      ))
+    : [];
+
+  const memberGroupsArray = Array.isArray(userMemberGroups)
+    ? userMemberGroups.map((group) => (
+        <div key={group.id} className="group-item">
+          <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
+        </div>
+      ))
     : [];
 
 
@@ -102,13 +113,15 @@ const UserProfile = ({ user }) => {
                             </div>
                         </div>
                         <div className="cell medium-6">
-                            <div className="group-list">
-                                <h2>Your Created Groups:</h2>
-                                <div>
-                                    {groupsArray}
-                                </div>
-                            </div>
-                        </div>
+      <div className="group-list">
+        <h2>Your Created Groups:</h2>
+        <div>{ownedGroupsArray}</div>
+      </div>
+      <div className="group-list">
+        <h2>Your Member Groups:</h2>
+        <div>{memberGroupsArray}</div>
+      </div>
+    </div>
                     </div>
                 </div>
             </div>
