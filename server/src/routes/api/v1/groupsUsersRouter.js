@@ -18,29 +18,31 @@ const groupsUsersRouter = new express.Router();
 //     }
 //     });
 
-groupsUsersRouter.get("/:id/users", async (req, res) => {
-    const groupId = req.params.id; // Correctly extract groupId
+// groupsUsersRouter.get("/:id/users", async (req, res) => {
+//     const groupId = req.params.id; // Correctly extract groupId
 
-    try {
-        const group = await Group.query().findById(groupId);
+//     try {
+//         const group = await Group.query().findById(groupId);
 
-        if (!group) {
-            return res.status(404).json({ error: "Group not found" });
-        }
+//         if (!group) {
+//             return res.status(404).json({ error: "Group not found" });
+//         }
 
-        const users = await group.$relatedQuery("users");
-        console.log("USERS:", users);
+//         const users = await group.$relatedQuery("users");
+//         console.log("USERS:", users);
 
-        const serializedUsers = users.map((user) =>
-            UserSerializer.showUserDetails(user)
-        );
+//         const serializedUsers = users.map((user) =>
+//             UserSerializer.showUserDetails(user)
+//         );
 
-        return res.status(200).json({ group: group, users: serializedUsers });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ error: "Internal server error" });
-    }
-});
+//         return res.status(200).json({ group: group, users: serializedUsers });
+//     } catch (error) {
+//         console.log(error);
+//         console.log("groupId:", groupId)
+//         console.log("group:", group)
+//         return res.status(500).json({ error: "Internal server error" });
+//     }
+// });
 
     
 

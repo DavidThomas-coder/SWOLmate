@@ -28,14 +28,14 @@ const GroupShow = (props) => {
 
     const getGroupUsers = async (groupId) => {
         try {
-            const response = await fetch(`/api/v1/groups/${groupId}/users`);
+            const response = await fetch(`/api/v1/groups/${groupId}`);
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
             const data = await response.json();
             console.log("groupUsers data:", data)
-            const { users } = data; // Extract the users array
-            setGroupUsers(users); // Set the users array in the state
+            const { group } = data; // Extract the users array
+            setGroupUsers(group.users); // Set the users array in the state
             } catch (error) {
             console.error("Error fetching group users:", error.message);
         }
