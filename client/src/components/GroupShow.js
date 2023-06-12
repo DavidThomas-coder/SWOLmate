@@ -33,6 +33,7 @@ const GroupShow = (props) => {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
             const data = await response.json();
+            console.log("groupUsers data:", data)
             const { users } = data; // Extract the users array
             setGroupUsers(users); // Set the users array in the state
             } catch (error) {
@@ -42,6 +43,7 @@ const GroupShow = (props) => {
 
     const getGroup = async () => {
         const groupId = props.match.params.id;
+        console.log("GROUPID:", groupId)
         try {
         const response = await fetch(`/api/v1/groups/${groupId}`);
         if (!response.ok) {
