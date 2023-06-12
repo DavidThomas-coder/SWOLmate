@@ -28,6 +28,7 @@ groupsUsersRouter.get("/", async (req, res) => {
             }
     
             const users = await group.$relatedQuery("users");
+            console.log("USERS:", users)
     
             const serializedUsers = users.map((user) =>
                 UserSerializer.showUserDetails(user)
