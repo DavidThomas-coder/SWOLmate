@@ -5,45 +5,49 @@ import { Group, User, Membership } from "../../../models/index.js";
 
 const groupsUsersRouter = new express.Router();
 
-groupsUsersRouter.get("/", async (req, res) => {
+// groupsUsersRouter.get("/", async (req, res) => {
+//     console.log("1")
+//     try {
+//         const users = await User.query();
+//         const serializedUsers = users.map((user) =>
+//         UserSerializer.showUserDetails(user)
+//         );
+//         return res.status(200).json({ users: serializedUsers });
+//     } catch (error) {
+//         return res.status(500).json({ errors: error });
+//     }
+//     });
+
+groupsUsersRouter.get("/:id/users", async (req, res) => {
+    const groupId = req.params.id; // Correctly extract groupId
+
     try {
-        const users = await User.query();
-        const serializedUsers = users.map((user) =>
-        UserSerializer.showUserDetails(user)
-        );
-        return res.status(200).json({ users: serializedUsers });
-    } catch (error) {
-        return res.status(500).json({ errors: error });
-    }
-    });
+        const group = await Group.query().findById(groupId);
 
-    groupsUsersRouter.get("/:id/users", async (req, res) => {
-        const { groupId } = req.params;
-    
-        try {
-            const group = await Group.query().findById(groupId);
-    
-            if (!group) {
-                return res.status(404).json({ error: "Group not found" });
-            }
-    
-            const users = await group.$relatedQuery("users");
-            console.log("USERS:", users)
-    
-            const serializedUsers = users.map((user) =>
-                UserSerializer.showUserDetails(user)
-            );
-    
-            return res.status(200).json({ group: group, users: serializedUsers });
-        } catch (error) {
-            return res.status(500).json({ error: "Internal server error" });
+        if (!group) {
+            return res.status(404).json({ error: "Group not found" });
         }
-    });     
 
-groupsUsersRouter.post("/", async (req, res) => {
-    const { groupId, userId } = req.body;
-    console.log("BELOW IS REQ BODY");
-    console.log(req.body);
+        const users = await group.$relatedQuery("users");
+        console.log("USERS:", users);
+
+        const serializedUsers = users.map((user) =>
+            UserSerializer.showUserDetails(user)
+        );
+
+        return res.status(200).json({ group: group, users: serializedUsers });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+    
+
+    groupsUsersRouter.post("/", async (req, res) => {
+        const { groupId, userId } = req.body;
+        console.log("BELOW IS REQ BODY");
+        console.log(req.body);
 
     try {
         const group = await Group.query().findById(groupId);
