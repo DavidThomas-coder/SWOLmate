@@ -8,8 +8,9 @@ class Group extends Model {
     static get jsonSchema() {
         return {
             type: "object",
-            required: ["ownerId", "groupName"],
+            required: ["id", "ownerId", "groupName"],
             properties: {
+                id: { type: ["integer", "string"] },
                 ownerId: { type: ["integer", "string"] },
                 groupName: { type: "string" }
             }
