@@ -59,17 +59,17 @@ const UserProfile = ({ user }) => {
     const ownedGroupsArray = Array.isArray(userOwnedGroups)
     ? userOwnedGroups.map((group) => (
         <div key={group.id} className="group-item">
-          <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
+            <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
         </div>
-      ))
+    ))
     : [];
 
-  const memberGroupsArray = Array.isArray(userMemberGroups)
+    const memberGroupsArray = Array.isArray(userMemberGroups)
     ? userMemberGroups.map((group) => (
         <div key={group.id} className="group-item">
-          <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
+            <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
         </div>
-      ))
+    ))
     : [];
 
 

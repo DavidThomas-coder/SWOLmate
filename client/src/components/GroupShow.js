@@ -106,18 +106,24 @@ const GroupShow = (props) => {
     };
 
     const chatsArray = userChats.map((chat) => {
-        return (
-        <div key={chat.id} className="chat-item">
-            <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
-            <button
-            onClick={(event) => handleAddUser(event, chat.otherUser.id)}
-            className="invite-button"
-            >
-            Invite
-            </button>
-        </div>
-        );
-    });
+        // Exclude the logged-in user and users already in the group
+        if (
+            chat.otherUser.id !== loggedInUser.id &&
+            !groupUsers.find((user) => user.id === chat.otherUser.id)
+            ) {
+            return (
+                <div key={chat.id} className="chat-item">
+                <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
+                <button
+                    onClick={(event) => handleAddUser(event, chat.otherUser.id)}
+                    className="invite-button"
+                >
+                    Invite
+                </button>
+                </div>
+            );
+        }
+    });      
 
     return (
         <div className="show-page">
