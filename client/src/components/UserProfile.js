@@ -5,58 +5,73 @@ import ProfileImage from "./ProfileImage";
 
 const UserProfile = ({ user }) => {
     const [userChats, setUserChats] = useState([])
-    const [userGroups, setUserGroups] = useState([])
+    const [userOwnedGroups, setUserOwnedGroups] = useState([])
+    const [userMemberGroups, setUserMemberGroups] = useState([])
 
     const getUserChats = async () => {
         try {
-        const response = await fetch(`/api/v1/chats`);
-        if (!response.ok) {
-            const errorMessage = `${response.status} (${response.statusText})`;
-            const error = new Error(errorMessage);
-            throw error;
-        }
-        const chatBody = await response.json();
-        setUserChats(chatBody.chats);
-        } catch (error) {
-        console.error(`Error in fetch: ${error.message}`);
-        }
-    };
-
-    const getUserGroups = async () => {
-        try {
-            const response = await fetch(`/api/v1/groups`)
+            const response = await fetch(`/api/v1/chats`);
             if (!response.ok) {
-                const errorMessage = `${response.status} (${response.statusText})`
-                const error = new Error(errorMessage)
-                throw error
+                const errorMessage = `${response.status} (${response.statusText})`;
+                const error = new Error(errorMessage);
+                throw error;
             }
-            const groupBody = await response.json()
-            setUserGroups(groupBody.groups)
-        } catch (error) {
-            console.error(`Error in fetch: ${error.message}`)
+            const chatBody = await response.json();
+            // console.log(chatBody); // Add this console log
+            setUserChats(chatBody.chats);
+            } catch (error) {
+            console.error(`Error in fetch: ${error.message}`);
+        }
+    };      
+
+    const getUserGroups = async (userId) => {
+        try {
+            const response = await fetch(`/api/v1/users/${userId}/groups`);
+            if (!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`;
+                throw new Error(errorMessage);
+            }
+            const groupBody = await response.json();
+            console.log("groupBody:", groupBody);
+            const { ownedGroups, memberGroups } = groupBody;
+            console.log("ownedGroups:", ownedGroups);
+            console.log("memberGroups:", memberGroups);
+            setUserOwnedGroups(ownedGroups);
+            setUserMemberGroups(memberGroups);
+            } catch (error) {
+            console.error(`Error in fetch: ${error.message}`);    
         }
     }
 
     useEffect(() => {
         getUserChats()
-        getUserGroups()
-    }, [])
+        getUserGroups(user.id) // pass user.id as argument
+    }, [user.id])    
 
     const chatsArray = userChats.map((chat) => {
         return (
-        <div key={chat.id}className="chat-item">
-            <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
-        </div>
-        )
-    })
-
-    const groupsArray = userGroups.map((group) => {
-        return (
-            <div key={group.id}className="group-item">
-                <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
+            <div key={chat.id} className="chat-item">
+                <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
             </div>
-        )
-    })
+        );
+    });      
+
+    const ownedGroupsArray = Array.isArray(userOwnedGroups)
+    ? userOwnedGroups.map((group) => (
+        <div key={group.id} className="group-item">
+            <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
+        </div>
+    ))
+    : [];
+
+    const memberGroupsArray = Array.isArray(userMemberGroups)
+    ? userMemberGroups.map((group) => (
+        <div key={group.id} className="group-item">
+            <Link to={`/groups/${group.id}`}>{group.groupName}</Link>
+        </div>
+    ))
+    : [];
+
 
     return (
         <div className="userProfile">
@@ -98,13 +113,15 @@ const UserProfile = ({ user }) => {
                             </div>
                         </div>
                         <div className="cell medium-6">
-                            <div className="group-list">
-                                <h2>Your Groups:</h2>
-                                <div className="grid-x small-up-1 medium-up-3">
-                                    {groupsArray}
-                                </div>
-                            </div>
-                        </div>
+      <div className="group-list">
+        <h2>Your Created Groups:</h2>
+        <div>{ownedGroupsArray}</div>
+      </div>
+      <div className="group-list">
+        <h2>Your Member Groups:</h2>
+        <div>{memberGroupsArray}</div>
+      </div>
+    </div>
                     </div>
                 </div>
             </div>

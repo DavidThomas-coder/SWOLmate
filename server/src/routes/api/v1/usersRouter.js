@@ -2,10 +2,13 @@ import express from "express";
 import { ValidationError } from "objection";
 import UserSerializer from "../../serializers/UserSerializer.js";
 import uploadImage from "../../../services/uploadImage.js";
+import usersGroupsRouter from "./usersGroupsRouter.js";
 
 import { User } from "../../../models/index.js";
 
 const usersRouter = new express.Router();
+
+usersRouter.use("/:id/groups", usersGroupsRouter)
 
 usersRouter.get("/", async (req, res) => {
   try {

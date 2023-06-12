@@ -8,8 +8,9 @@ class Group extends Model {
     static get jsonSchema() {
         return {
             type: "object",
-            required: ["ownerId", "groupName"],
+            required: ["id", "ownerId", "groupName"],
             properties: {
+                id: { type: ["integer", "string"] },
                 ownerId: { type: ["integer", "string"] },
                 groupName: { type: "string" }
             }
@@ -20,7 +21,7 @@ class Group extends Model {
         const {User, Membership, Note} = require("./index.js")
 
         return {
-            users: {
+            ownedGroupUsers: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: User,
                 join: {
@@ -44,7 +45,18 @@ class Group extends Model {
                     to: "notes.groupId"
                 }
             },
-            
+            users: {
+                relation: Model.ManyToManyRelation,
+                modelClass: User,
+                join: {
+                    from: "groups.id",
+                    through: {
+                        from: "memberships.groupId",
+                        to: "memberships.userId",
+                    },
+                    to: "users.id",
+                },
+            },
         }
     }
 
