@@ -105,37 +105,49 @@ const GroupShow = (props) => {
         }
     };
 
-    const chatsArray = userChats.map((chat) => {
-        return (
+    const chatsArray = userChats
+    .filter(
+        (chat) =>
+            chat.otherUser.id !== props.user.id &&
+            !groupUsers.find((user) => user.id === chat.otherUser.id)
+    )
+    .map((chat) => (
         <div key={chat.id} className="chat-item">
             <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
             <button
-            onClick={(event) => handleAddUser(event, chat.otherUser.id)}
-            className="invite-button"
+                onClick={(event) => handleAddUser(event, chat.otherUser.id)}
+                className="invite-button"
             >
-            Invite
+                Invite
             </button>
         </div>
-        );
-    });
+    ));
 
-    return (
-        <div className="show-page">
+const hasChats = chatsArray.length > 0;
+
+return (
+    <div className="show-page">
         <h2 className="show-title">{groupShow?.groupName || "Loading..."}</h2>
         <h3>Add A User You've Connected With:</h3>
-        {chatsArray}
+        {hasChats ? (
+            chatsArray
+        ) : (
+            <p>All of your connections are in this group.</p>
+        )}
         {groupUsers && (
             <div className="group-users">
-            <h2>Group Users:</h2>
-            <ul>
-                {groupUsers.map((user) => (
-                <li key={user.id}>{user.firstName}</li>
-                ))}
-            </ul>
+                <h2>Group Users:</h2>
+                <ul>
+                    {groupUsers.map((user) => (
+                        <li key={user.id}>{user.firstName}</li>
+                    ))}
+                </ul>
             </div>
         )}
-        </div>
-    );
+    </div>
+);
+
+    
 };
 
 export default GroupShow;

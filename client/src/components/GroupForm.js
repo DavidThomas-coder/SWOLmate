@@ -39,6 +39,7 @@ const GroupForm = (props) => {
         event.preventDefault();
     
         try {
+            console.log("newGroup:", newGroup)
 
             const response = await fetch('/api/v1/groups', {
                 method: "POST",

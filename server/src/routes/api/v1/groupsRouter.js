@@ -53,7 +53,7 @@ groupsRouter.post("/", async (req, res) => {
         const ownerId = req.user.id
         const groupName = req.body.groupName
         const newGroup = await Group.query().insert({groupName: groupName, ownerId: ownerId})
-        return res.status(201.).json({group: newGroup})
+        return res.status(201).json({group: newGroup})
     } catch(error) {
         console.log(error)
         return res.status(500).json({ errors: error })
