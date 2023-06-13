@@ -25,11 +25,13 @@ groupsRouter.get("/:id", async (req, res) => {
     const { id } = req.params
         try {
             const group = await Group.query().findById(id)
+            const ownerId = group.ownerId
             // const serializedGroup = GroupSerializer.showGroupDetails(group) // eliminate other "variables" for errors like serializers for the time being
-            group.users = await group.$relatedQuery("users") // ensure relationMappings will correctly query
-            return res.status(200).json({ group: group }) // ensure that you see the data you expect at the direct API endpoint in the browser
+            const users = await group.$relatedQuery("users") // ensure relationMappings will correctly query
+            return res.status(200).json({ group: { ...group, ownerId, users } });
         } catch (error) {
-            return res.status(500).json({ errors: error })
+            console.log(error)
+            return res.status(500).json({ errors: error });
         }
     })
 
