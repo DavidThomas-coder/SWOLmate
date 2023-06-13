@@ -7,11 +7,9 @@ const GroupShow = (props) => {
         groupName: "",
         notes: [],
         users: [],
-        ownerId: "", // Added ownerId to the initial state
     });
     const [userChats, setUserChats] = useState([]);
     const [groupUsers, setGroupUsers] = useState([]);
-    const [loading, setLoading] = useState(true); // Added loading state
 
     const getUserChats = async () => {
         try {
@@ -30,20 +28,22 @@ const GroupShow = (props) => {
 
     const getGroupUsers = async (groupId) => {
         try {
-        const response = await fetch(`/api/v1/groups/${groupId}`);
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} ${response.statusText}`);
+            const response = await fetch(`/api/v1/groups/${groupId}`);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
+            }
+            const data = await response.json();
+            console.log("groupUsers data:", data)
+            const { group } = data; // Extract the users array
+            setGroupUsers(group.users); // Set the users array in the state
+            } catch (error) {
+            console.error("Error fetching group users:", error.message);
         }
-        const data = await response.json();
-        const { group } = data;
-        setGroupUsers(group.users);
-        } catch (error) {
-        console.error("Error fetching group users:", error.message);
-        }
-    };
+    };      
 
     const getGroup = async () => {
         const groupId = props.match.params.id;
+        console.log("GROUPID:", groupId)
         try {
         const response = await fetch(`/api/v1/groups/${groupId}`);
         if (!response.ok) {
@@ -51,11 +51,14 @@ const GroupShow = (props) => {
             throw new Error(errorMessage);
         }
         const data = await response.json();
+        console.log("data:", data);
         const { group } = data;
-        const { ownerId } = group;
-        setGroupShow({ ...group, ownerId });
+
+        // Set the group in the state
+        setGroupShow(group);
+
+        // Fetch the group users
         getGroupUsers(groupId);
-        setLoading(false); // Set loading to false once data is fetched
         } catch (error) {
         console.error(`Error in fetch: ${error.message}`);
         }
@@ -66,10 +69,15 @@ const GroupShow = (props) => {
         getGroup();
     }, []);
 
+    console.log("groupShow:", groupShow);
+    console.log("groupUsers:", groupUsers);
+
     const handleAddUser = async (event, userId) => {
         event.preventDefault();
+
         try {
         const groupId = groupShow.id;
+
         const response = await fetch(`/api/v1/groups/${groupId}/users`, {
             method: "POST",
             headers: {
@@ -77,74 +85,89 @@ const GroupShow = (props) => {
             },
             body: JSON.stringify({ groupId, userId }),
         });
+
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
+
+        // Assuming the response contains the updated group information
         const data = await response.json();
+        console.log("data:", data);
         const updatedGroup = data.group;
+
+        // Update state
         setGroupShow(updatedGroup);
+
+        // Show a message or error
         console.log("User added to group successfully!");
         } catch (error) {
         console.error("Error adding user:", error.message);
         }
     };
 
-    const chatsArray = isOwner
-    ? userChats
-        .filter(
-            (chat) =>
-                chat.otherUser.id !== props.user.id &&
-                !groupUsers.find((user) => user.id === chat.otherUser.id)
-            )
-            .map((chat) => (
-            <div key={chat.id} className="chat-item">
-                <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
-                <button
+    const chatsArray = userChats
+    .filter(
+        (chat) =>
+            chat.otherUser.id !== props.user.id &&
+            !groupUsers.find((user) => user.id === chat.otherUser.id)
+    )
+    .map((chat) => (
+        <div key={chat.id} className="chat-item">
+            <Link to={`/chats/${chat.id}`}>{chat.title}</Link>
+            <button
                 onClick={(event) => handleAddUser(event, chat.otherUser.id)}
                 className="invite-button"
-                >
+            >
                 Invite
-                </button>
-            </div>
-        ))
-    : [];
+            </button>
+        </div>
+    ));
 
-    const hasChats = chatsArray.length > 0;
+const hasChats = chatsArray.length > 0;
 
-    if (loading) {
-        return <p>Loading...</p>;
-    }
-
-    const isOwner = groupShow.ownerId === props.user.id;
-    console.log("groupShow.ownerId:", groupShow.ownerId)
-    console.log("props.user.id:", props.user.id)
-
-    return (
-        <div className="show-page">
+return (
+    <div className="show-page">
         <h2 className="show-title">{groupShow?.groupName || "Loading..."}</h2>
-        {isOwner && (
-  <>
-    <h3>Add A User You've Connected With:</h3>
-    {hasChats ? (
-      chatsArray
-    ) : (
-      <p>All of your connections are in this group.</p>
-    )}
-  </>
-)}
-
+        return (
+        <div className="show-page">
+            <h2 className="show-title">{groupShow?.groupName || "Loading..."}</h2>
+            {groupShow.ownerId === props.user.id && (
+                <>
+                    <h3>Add A User You've Connected With:</h3>
+                    {hasChats ? (
+                    chatsArray
+                    ) : (
+                    <p>All of your connections are in this group.</p>
+                    )}
+                </>
+            )}
+            {groupUsers && (
+                <div className="group-users">
+                    <h2>Group Users:</h2>
+                    <ul>
+                        {groupUsers.map((user) => (
+                            <li key={user.id}>{user.firstName}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    );   
+};
         {groupUsers && (
             <div className="group-users">
-            <h2>Group Users:</h2>
-            <ul>
-                {groupUsers.map((user) => (
-                <li key={user.id}>{user.firstName}</li>
-                ))}
-            </ul>
+                <h2>Group Users:</h2>
+                <ul>
+                    {groupUsers.map((user) => (
+                        <li key={user.id}>{user.firstName}</li>
+                    ))}
+                </ul>
             </div>
         )}
-        </div>
-    );
+    </div>
+);
+
+    
 };
 
 export default GroupShow;
