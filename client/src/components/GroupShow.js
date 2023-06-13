@@ -123,29 +123,36 @@ const GroupShow = (props) => {
         </div>
     ));
 
-const hasChats = chatsArray.length > 0;
+    const hasChats = chatsArray.length > 0;
 
-return (
-    <div className="show-page">
-        <h2 className="show-title">{groupShow?.groupName || "Loading..."}</h2>
-        <h3>Add A User You've Connected With:</h3>
-        {hasChats ? (
-            chatsArray
-        ) : (
-            <p>All of your connections are in this group.</p>
-        )}
-        {groupUsers && (
-            <div className="group-users">
+    console.log("groupShow.ownerId:", groupShow.ownerId)
+    console.log("props.user.id:", props.user.id)
+
+    return (
+        <div className="show-page">
+            <h2 className="show-title">{groupShow?.groupName || "Loading..."}</h2>
+            {groupShow.ownerId === props.user.id && (
+                <div className="owner-invite">
+                    <h3>Add A User You've Connected With:</h3>
+                    {hasChats ? (
+                        chatsArray
+                    ) : (
+                        <p>All of your connections are in this group.</p>
+                    )}
+                </div>
+            )}
+            {groupUsers && (
+                <div className="group-users">
                 <h2>Group Users:</h2>
                 <ul>
                     {groupUsers.map((user) => (
-                        <li key={user.id}>{user.firstName}</li>
+                    <li key={user.id}>{user.firstName}</li>
                     ))}
                 </ul>
-            </div>
-        )}
-    </div>
-);
+                </div>
+            )}
+        </div>
+    );  
 
     
 };
