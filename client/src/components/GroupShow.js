@@ -136,7 +136,7 @@ const GroupShow = (props) => {
     return (
         <div className="show-page">
             <h2 className="show-title">{groupShow?.groupName || "Loading..."}</h2>
-            {groupShow.ownerId === props.user.id ? (
+            {groupShow.ownerId === Number(props.user.id) ? (
             <div className="owner-invite">
                 <h3>Add A User You've Connected With:</h3>
                 {chatsArray}
