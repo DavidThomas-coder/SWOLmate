@@ -136,24 +136,23 @@ const GroupShow = (props) => {
             {groupShow?.groupName || "Loading..."}
         </h2>
         <h3 className="group-owner">Group Owner: {ownerName}</h3>
+        {groupUsers && (
+            <div className="group-users">
+            <h4>Group Users:</h4>
+            <ul>
+                {groupUsers.map((user) => (
+                    <li key={user.id}>{user.firstName}</li>
+                    ))}
+            </ul>
+            </div>
+        )}
         {groupShow.ownerId === Number(props.user.id) ? (
             <div className="owner-invite">
             <h3>Add A User You've Connected With:</h3>
             {chatsArray}
             </div>
         ) : null}
-        {groupUsers && (
-            <div className="group-users">
-            <h4>Group Users:</h4>
-            <ul>
-                {groupUsers.map((user) => (
-                <li key={user.id}>{user.firstName}</li>
-                ))}
-            </ul>
-            </div>
-        )}
         <div className="notes">
-            <h5>Talky Talky:</h5>
             <NoteForm />
         </div>
         </div>
