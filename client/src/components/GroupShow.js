@@ -151,6 +151,10 @@ const GroupShow = (props) => {
             </ul>
             </div>
         )}
+        <div className="notes">
+            <h5>Talky Talky:</h5>
+            <NoteForm />
+        </div>
         </div>
     );
 };
