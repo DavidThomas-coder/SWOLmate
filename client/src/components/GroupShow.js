@@ -51,7 +51,7 @@ const GroupShow = (props) => {
         }
         const data = await response.json();
         const owner = data.user;
-        const ownerName = `${owner.firstName} ${owner.lastName}`;
+        const ownerName = `${owner.firstName}`;
         setOwnerName(ownerName);
         } catch (error) {
         console.error("Error fetching owner's name:", error.message);
@@ -133,10 +133,8 @@ const GroupShow = (props) => {
         <div className="show-page">
         <h2 className="show-title">
             {groupShow?.groupName || "Loading..."}
-            {groupShow.ownerId === Number(props.user.id) && (
-            <span className="group-owner">(Group Owner: {ownerName})</span>
-            )}
         </h2>
+        <h3 className="group-owner">Group Owner: {ownerName}</h3>
         {groupShow.ownerId === Number(props.user.id) ? (
             <div className="owner-invite">
             <h3>Add A User You've Connected With:</h3>
@@ -145,7 +143,7 @@ const GroupShow = (props) => {
         ) : null}
         {groupUsers && (
             <div className="group-users">
-            <h2>Group Users:</h2>
+            <h4>Group Users:</h4>
             <ul>
                 {groupUsers.map((user) => (
                 <li key={user.id}>{user.firstName}</li>

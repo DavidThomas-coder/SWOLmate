@@ -20,6 +20,25 @@ usersRouter.get("/", async (req, res) => {
   }
 })
 
+usersRouter.get("/:id", async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const user = await User.query().findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const serializedUser = UserSerializer.showUserDetails(user);
+
+    return res.status(200).json({ user: serializedUser });
+  } catch (error) {
+    return res.status(500).json({ errors: error });
+  }
+});
+
+
 usersRouter.post("/", async (req, res) => {
   const { email, password, firstName, age, pronouns, cityNeighborhood, experienceLevel } = req.body;
   try {
