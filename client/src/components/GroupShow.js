@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import NoteForm from "./NoteForm";
 
 const GroupShow = (props) => {
     const [groupShow, setGroupShow] = useState({
