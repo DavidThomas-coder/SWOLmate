@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const NoteForm = () => {
+const NoteForm = ({ handleNoteSubmit }) => {
     const [newNote, setNewNote] = useState({
         noteBody: "",
     })

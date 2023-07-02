@@ -112,6 +112,32 @@ const GroupShow = (props) => {
         }
     };
 
+    const handleNoteSubmit = async (event, newNote) => {
+        event.preventDefault();
+
+        try {
+        const response = await fetch(`/api/v1/groups/${groupShow.id}/notes`, {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ note: newNote }),
+        });
+
+        if (response.ok) {
+            const body = await response.json();
+            setGroupShow({
+            ...groupShow,
+            notes: [...chatShow.notes, body.note],
+            });
+        } else {
+            console.error("Failed to add note:", response.statusText);
+        }
+        } catch (error) {
+        console.error(`Error in fetch: ${error.message}`);
+        }
+    };
+
     const chatsArray = userChats
         .filter(
         (chat) =>
@@ -153,7 +179,10 @@ const GroupShow = (props) => {
                 </div>
             ) : null}
             <div className="notes">
-                <NoteForm />
+                <NoteForm 
+                handleNoteSubmit={handleNoteSubmit}
+                notes={groupShow.notes}
+                />
             </div>
         </div>
     );
