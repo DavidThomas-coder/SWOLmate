@@ -13,7 +13,7 @@ const NoteForm = () => {
         })
     }
 
-    const handleNoteSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
         if (newNote.noteBody.trim() !== "") {
             handleNoteSubmit(event, newNote)
@@ -26,7 +26,7 @@ const NoteForm = () => {
 
     return (
         <div className="NoteForm-wrapper">
-            <form onSubmit={handleNoteSubmit} className="NoteForm">
+            <form onSubmit={handleSubmit} className="NoteForm">
                 <label>
                 Leave a Note For The Group!
                 </label>

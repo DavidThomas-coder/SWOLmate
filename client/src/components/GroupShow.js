@@ -132,29 +132,29 @@ const GroupShow = (props) => {
 
     return (
         <div className="show-page">
-        <h2 className="show-title">
-            {groupShow?.groupName || "Loading..."}
-        </h2>
-        <h3 className="group-owner">Group Owner: {ownerName}</h3>
-        {groupUsers && (
-            <div className="group-users">
-            <h4>Group Users:</h4>
-            <ul>
-                {groupUsers.map((user) => (
-                    <li key={user.id}>{user.firstName}</li>
-                    ))}
-            </ul>
+            <h2 className="show-title">
+                {groupShow?.groupName || "Loading..."}
+            </h2>
+            <h3 className="group-owner">Group Owner: {ownerName}</h3>
+            {groupUsers && (
+                <div className="group-users">
+                <h4>Group Users:</h4>
+                <ul>
+                    {groupUsers.map((user) => (
+                        <li key={user.id}>{user.firstName}</li>
+                        ))}
+                </ul>
+                </div>
+            )}
+            {groupShow.ownerId === Number(props.user.id) ? (
+                <div className="owner-invite">
+                <h3>Add A User You've Connected With:</h3>
+                {chatsArray}
+                </div>
+            ) : null}
+            <div className="notes">
+                <NoteForm />
             </div>
-        )}
-        {groupShow.ownerId === Number(props.user.id) ? (
-            <div className="owner-invite">
-            <h3>Add A User You've Connected With:</h3>
-            {chatsArray}
-            </div>
-        ) : null}
-        <div className="notes">
-            <NoteForm />
-        </div>
         </div>
     );
 };
