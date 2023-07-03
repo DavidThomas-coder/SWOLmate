@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NoteForm from "./NoteForm";
+import NoteTile from "./NoteTile";
 
 const GroupShow = (props) => {
     const [groupShow, setGroupShow] = useState({
@@ -156,6 +157,19 @@ const GroupShow = (props) => {
         </div>
         ));
 
+    const noteList =
+        groupShow.notes.length > 0 ? (
+        groupShow.notes.map((note) => (
+            <NoteTile
+            key={note.id}
+            note={note}
+            user={users[note.userId]} // Pass the corresponding user data as props
+            />
+        ))
+        ) : (
+        <p>Quiet group!</p>
+        );
+
     return (
         <div className="show-page">
             <h2 className="show-title">
@@ -184,6 +198,7 @@ const GroupShow = (props) => {
                 notes={groupShow.notes}
                 />
             </div>
+            <ul>{noteList}</ul>
         </div>
     );
 };

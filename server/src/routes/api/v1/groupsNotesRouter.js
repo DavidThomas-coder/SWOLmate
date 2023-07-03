@@ -17,10 +17,10 @@ groupsNotesRouter.get("/", async (req, res) => {
 })
 
 groupsNotesRouter.post("/", async (req, res) => {
-    const chatId = req.params.id
+    const groupId = req.params.id
     const newNoteBody = req.body.note.noteBody
     try {
-        const newNote = await Note.query().insert({ noteBody: newNoteBody, userId: req.user.id })
+        const newNote = await Note.query().insert({ noteBody: newNoteBody, userId: req.user.id, groupId: groupId })
         return res.status(201).json({ note: newNote })
     } catch (error) {
         console.log(error)
