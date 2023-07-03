@@ -128,7 +128,7 @@ const GroupShow = (props) => {
             const body = await response.json();
             setGroupShow({
             ...groupShow,
-            notes: [...chatShow.notes, body.note],
+            notes: [...groupShow.notes, body.note],
             });
         } else {
             console.error("Failed to add note:", response.statusText);
@@ -189,4 +189,3 @@ const GroupShow = (props) => {
 };
 
 export default GroupShow;
-

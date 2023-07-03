@@ -1,4 +1,5 @@
 import express from "express"
+import { ValidationError } from "objection"
 import NoteSerializer from "../../serializers/NoteSerializer.js"
 
 import { Note } from "../../../models/index.js"
@@ -19,7 +20,7 @@ groupsNotesRouter.post("/", async (req, res) => {
     const chatId = req.params.id
     const newNoteBody = req.body.note.noteBody
     try {
-        const newNote = await Note.query().insert({ noteBody: newNoteBody, chatId: chatId, userId: req.user.id })
+        const newNote = await Note.query().insert({ noteBody: newNoteBody, userId: req.user.id })
         return res.status(201).json({ note: newNote })
     } catch (error) {
         console.log(error)
