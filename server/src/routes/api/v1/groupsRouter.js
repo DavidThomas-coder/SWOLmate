@@ -1,15 +1,16 @@
 import express from "express"
 import GroupSerializer from "../../serializers/GroupSerializer.js"
 import groupsUsersRouter from "./groupsUsersRouter.js"
+import groupsNotesRouter from "./groupsNotesRouter.js"
 
 import { Group, Membership } from "../../../models/index.js"
 
 const groupsRouter = new express.Router()
 
 groupsRouter.use("/:id/users", groupsUsersRouter)
+groupsRouter.use("/:id/notes", groupsNotesRouter)
 
 groupsRouter.get("/", async (req, res) => {
-    console.log("4")
     try {
         const groups = await Group.query()
         const serializedGroups = groups.map(group => GroupSerializer.showGroupDetails(group))
@@ -21,7 +22,6 @@ groupsRouter.get("/", async (req, res) => {
 })
 
 groupsRouter.get("/:id", async (req, res) => {
-    console.log("3")
     const { id } = req.params
         try {
             const group = await Group.query().findById(id)

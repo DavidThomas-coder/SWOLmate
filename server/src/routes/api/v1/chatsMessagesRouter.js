@@ -20,10 +20,7 @@ chatsMessagesRouter.get("/", async (req, res) => {
 chatsMessagesRouter.post("/", async (req, res) => {
     const chatId = req.params.id
     const newMessageBody = req.body.message.messageBody
-    console.log(req.body)
     try {
-        console.log("Below is the newMessageBody!!!!")
-        console.log(newMessageBody)
         const newMessage = await Message.query().insert({ messageBody: newMessageBody, chatId: chatId, userId: req.user.id })
         return res.status(201).json({ message: newMessage })
     } catch (error) {

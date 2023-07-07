@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import NoteForm from "./NoteForm";
+import NoteTile from "./NoteTile";
 
 const GroupShow = (props) => {
     const [groupShow, setGroupShow] = useState({
@@ -111,6 +113,32 @@ const GroupShow = (props) => {
         }
     };
 
+    const handleNoteSubmit = async (event, newNote) => {
+        event.preventDefault();
+
+        try {
+        const response = await fetch(`/api/v1/groups/${groupShow.id}/notes`, {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ note: newNote }),
+        });
+
+        if (response.ok) {
+            const body = await response.json();
+            setGroupShow({
+            ...groupShow,
+            notes: [...groupShow.notes, body.note],
+            });
+        } else {
+            console.error("Failed to add note:", response.statusText);
+        }
+        } catch (error) {
+        console.error(`Error in fetch: ${error.message}`);
+        }
+    };
+
     const chatsArray = userChats
         .filter(
         (chat) =>
@@ -129,31 +157,50 @@ const GroupShow = (props) => {
         </div>
         ));
 
+    const noteList =
+        groupShow.notes.length > 0 ? (
+        groupShow.notes.map((note) => (
+            <NoteTile
+            key={note.id}
+            note={note}
+            user={users[note.userId]} // Pass the corresponding user data as props
+            />
+        ))
+        ) : (
+        <p>Quiet group!</p>
+        );
+
     return (
         <div className="show-page">
-        <h2 className="show-title">
-            {groupShow?.groupName || "Loading..."}
-        </h2>
-        <h3 className="group-owner">Group Owner: {ownerName}</h3>
-        {groupShow.ownerId === Number(props.user.id) ? (
-            <div className="owner-invite">
-            <h3>Add A User You've Connected With:</h3>
-            {chatsArray}
+            <h2 className="show-title">
+                {groupShow?.groupName || "Loading..."}
+            </h2>
+            <h3 className="group-owner">Group Owner: {ownerName}</h3>
+            {groupUsers && (
+                <div className="group-users">
+                <h4>Group Users:</h4>
+                <ul>
+                    {groupUsers.map((user) => (
+                        <li key={user.id}>{user.firstName}</li>
+                        ))}
+                </ul>
+                </div>
+            )}
+            {groupShow.ownerId === Number(props.user.id) ? (
+                <div className="owner-invite">
+                <h3>Add A User You've Connected With:</h3>
+                {chatsArray}
+                </div>
+            ) : null}
+            <div className="notes">
+                <NoteForm 
+                handleNoteSubmit={handleNoteSubmit}
+                notes={groupShow.notes}
+                />
             </div>
-        ) : null}
-        {groupUsers && (
-            <div className="group-users">
-            <h4>Group Users:</h4>
-            <ul>
-                {groupUsers.map((user) => (
-                <li key={user.id}>{user.firstName}</li>
-                ))}
-            </ul>
-            </div>
-        )}
+            <ul>{noteList}</ul>
         </div>
     );
 };
 
 export default GroupShow;
-
