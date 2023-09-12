@@ -106,7 +106,7 @@ const UserProfile = ({ user }) => {
                     <div className="grid-x grid-margin-x align-center">
                         <div className="cell medium-6">
                             <div className="chat-list">
-                                <h2>Your Chats:</h2>
+                                <h2>Who you've chatted with:</h2>
                                 <div>
                                     {chatsArray}
                                 </div>
