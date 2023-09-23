@@ -102,7 +102,7 @@ const GoogleMap = (props) => {
                         {userTiles}
                     </div>
                 </div>
-                <h1>Get Active In Your Area</h1>
+                <h1>Get SWOL In Your Area</h1>
                 <p>We're showing you gyms by default, but you can meet up anywhere!</p>
                 <div className="map-search-container">
                     <MapSearch setSearchQuery={setSearchQuery} />
