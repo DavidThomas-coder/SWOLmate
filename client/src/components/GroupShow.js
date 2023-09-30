@@ -175,7 +175,7 @@ const GroupShow = (props) => {
             <h2 className="show-title">
                 {groupShow?.groupName || "Loading..."}
             </h2>
-            <h3 className="group-owner">Group Creator: {ownerName}</h3>
+            <h3 className="group-owner">Group Owner: {ownerName}</h3>
             {groupUsers && (
                 <div className="group-users">
                 <h4>Users in group:</h4>
