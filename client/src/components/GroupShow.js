@@ -173,7 +173,7 @@ const GroupShow = (props) => {
     return (
         <div className="show-page">
             <h2 className="show-title">
-                {groupShow?.groupName || "Loading..."}
+                {groupShow?.groupName || "Loading group..."}
             </h2>
             <h3 className="group-owner">Group Owner: {ownerName}</h3>
             {groupUsers && (
