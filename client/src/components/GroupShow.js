@@ -157,17 +157,17 @@ const GroupShow = (props) => {
         </div>
         ));
 
-    const noteList =
-        groupShow.notes.length > 0 ? (
-        groupShow.notes.map((note) => (
-            <NoteTile
-            key={note.id}
-            note={note}
-            user={users[note.userId]} // Pass the corresponding user data as props
-            />
-        ))
-        ) : (
-        <p>Quiet group!</p>
+        const noteList =
+        groupShow.notes && groupShow.notes.length > 0 ? (
+            groupShow.notes.map((note) => (
+                <NoteTile
+                key={note.id}
+                note={note}
+                user={users[note.userId]} // Pass the corresponding user data as props
+                />
+            ))
+            ) : (
+            <p>Quiet group!</p>
         );
 
     return (
