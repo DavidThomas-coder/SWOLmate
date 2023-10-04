@@ -168,7 +168,7 @@ const GroupShow = (props) => {
             ))
             ) : (
             <p>Quiet group!</p>
-        );
+        );      
 
     return (
         <div className="show-page">
