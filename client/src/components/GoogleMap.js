@@ -112,7 +112,7 @@ const GoogleMap = (props) => {
             <div className="results-main">
                 <div className="cell medium-6">
                     <div className="result-list-container">
-                        <h2>Search Results:</h2>
+                        <h2>Results:</h2>
                             <div className="grid-x grid-margin-x small-up-1 medium-up-3">
                                 <ResultList searchResults={searchResults} />
                             </div>
