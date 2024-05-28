@@ -88,7 +88,7 @@ const ChatShow = (props) => {
             />
         ))
         ) : (
-        <p>Don't be shy, introduce yourself!</p>
+        <p>Introduce yourself!</p>
         );
 
     return (
