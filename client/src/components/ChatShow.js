@@ -39,7 +39,7 @@ const ChatShow = (props) => {
         const body = await response.json();
         const usersData = {};
         body.users.forEach((user) => {
-            usersData[user.id] = user; // Store user data as an object with user id as the key
+            usersData[user.id] = user; // Store user data as an object with userId as the key
         });
         setUsers(usersData);
         } catch (err) {
