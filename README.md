@@ -5,6 +5,7 @@ are able to find other like-minded active people, gyms and meetup spots near the
 
 # Programming
 
+- JavaScript
 - Backend: Express, Node
 - Frontend: React
 - Database: PostgreSQL
