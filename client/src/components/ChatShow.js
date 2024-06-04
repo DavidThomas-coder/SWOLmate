@@ -84,7 +84,7 @@ const ChatShow = (props) => {
             <MessageTile
             key={message.id}
             message={message}
-            user={users[message.userId]} // Pass the corresponding user data as props
+            user={users[message.userId]} // Pass the corresponding user data as props 
             />
         ))
         ) : (
