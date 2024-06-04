@@ -45,7 +45,7 @@ const UserProfile = ({ user }) => {
 
     useEffect(() => {
         getUserChats()
-        getUserGroups(user.id) // pass user.id as argument
+        getUserGroups(user.id) // pass user.id as an argument
     }, [user.id])    
 
     const chatsArray = userChats.map((chat) => {
