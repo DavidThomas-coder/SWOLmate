@@ -1,10 +1,11 @@
 # SWOLmate
 SWOLmate is a social meetup platform designed to pair up users based on their fitness goals and help them find their perfect gym buddy.
 Users can sign up for the platform and make a profile, and via the Google Maps API and geolocation-based services, SWOLmate users
-are able to find other SWOLmate users, gyms and meetup spots near their location.
+are able to find other like-minded active people, gyms and meetup spots near their location.
 
 # Programming
 
+- JavaScript
 - Backend: Express, Node
 - Frontend: React
 - Database: PostgreSQL
