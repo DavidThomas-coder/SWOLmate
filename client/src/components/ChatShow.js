@@ -10,7 +10,7 @@ const ChatShow = (props) => {
         otherUser: {},
     });
 
-    const [users, setUsers] = useState({}); // State to store user data
+    const [users, setUsers] = useState({}); // Save user data in state
 
     const getChat = async () => {
         const chatId = props.match.params.id;
