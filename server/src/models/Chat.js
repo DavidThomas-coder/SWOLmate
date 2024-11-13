@@ -39,6 +39,7 @@ class Chat extends Model {
             }
         }
     }
+    
 
     static async addChat(newChat) {
         const chatExists = await Chat.query().findOne({id: newChat.id })
