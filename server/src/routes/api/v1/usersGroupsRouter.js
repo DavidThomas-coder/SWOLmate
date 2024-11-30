@@ -12,10 +12,8 @@ usersGroupsRouter.get("/:id/groups", async (req, res) => {
   }
 
   try {
-    // Find groups where the ownerId matches the user's ID
     const ownedGroups = await Group.query().where("ownerId", id);
 
-    // Find groups where the userId matches the user's ID in the Membership table
     const memberGroups = await Group.query()
       .joinRelated("memberships")
       .where("memberships.userId", id);
