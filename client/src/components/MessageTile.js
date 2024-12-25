@@ -14,8 +14,8 @@ const MessageTile = (props) => {
                 )}
                 <p className="message-body">{message.messageBody}</p>
             </div>
-            </div>
-        );
+        </div>
+    );
 };
 
 export default MessageTile;

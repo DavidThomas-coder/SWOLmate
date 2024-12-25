@@ -5,7 +5,6 @@ import { ValidationError } from "objection"
 import MessageSerializer from "../../serializers/MessageSerializer.js";
 
 const chatsMessagesRouter = new express.Router({ mergeParams: true })
-// import cleanUserInput from "../../../services/cleanUserInput.js";
 
 chatsMessagesRouter.get("/", async (req, res) => {
     try {

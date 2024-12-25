@@ -1,7 +1,6 @@
 import express, { request } from "express";
 import { ValidationError } from "objection";
 import chatsMessagesRouter from "./chatsMessagesRouter.js";
-// import UserSerializer from "../../serializers/UserSerializer.js";
 import ChatSerializer from "../../serializers/ChatSerializer.js";
 
 import { Chat, Message, User, UserChat } from "../../../models/index.js";

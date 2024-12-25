@@ -10,7 +10,7 @@ const ChatShow = (props) => {
         otherUser: {},
     });
 
-    const [users, setUsers] = useState({}); // State to store user data
+    const [users, setUsers] = useState({});
 
     const getChat = async () => {
         const chatId = props.match.params.id;
@@ -39,7 +39,7 @@ const ChatShow = (props) => {
         const body = await response.json();
         const usersData = {};
         body.users.forEach((user) => {
-            usersData[user.id] = user; // Store user data as an object with userId as the key
+            usersData[user.id] = user; 
         });
         setUsers(usersData);
         } catch (err) {
@@ -84,11 +84,11 @@ const ChatShow = (props) => {
             <MessageTile
             key={message.id}
             message={message}
-            user={users[message.userId]} // Pass the corresponding user data as props
+            user={users[message.userId]}
             />
         ))
         ) : (
-        <p>Introduce yourself!</p>
+        <p>Don't be shy, say hi!</p>
         );
 
     return (

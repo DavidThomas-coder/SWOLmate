@@ -15,7 +15,6 @@ class ChatSerializer {
 
         const relatedUsers = await chat.$relatedQuery("users")
         
-        // iterate over the users, and find the user that isnt the currentuser. that user's name can be the title of the chat
         relatedUsers.forEach((relatedUser) => {
             if (relatedUser.id !== currentUser.id) {
                 serializedChat.title = relatedUser.firstName

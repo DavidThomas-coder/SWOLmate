@@ -25,28 +25,11 @@ groupsRouter.get("/:id", async (req, res) => {
     const { id } = req.params
         try {
             const group = await Group.query().findById(id)
-            // const serializedGroup = GroupSerializer.showGroupDetails(group) // eliminate other "variables" for errors like serializers for the time being
-            group.users = await group.$relatedQuery("users") // ensure relationMappings will correctly query
-            return res.status(200).json({ group: group }) // ensure that you see the data you expect at the direct API endpoint in the browser
-        } catch (error) {
+            group.users = await group.$relatedQuery("users") 
+            return res.status(200).json({ group: group }) 
             return res.status(500).json({ errors: error })
         }
     })
-
-// groupsRouter.get("/:id/users", async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const group = await Group.query().findById(id);
-//         if (!group) {
-//         return res.status(404).json({ error: "Group not found" });
-//         }
-//         const users = await group.$relatedQuery("users").select("id", "name");
-//         return res.status(200).json({ users });
-//     } catch (error) {
-//         console.error("Error retrieving group users:", error);
-//         return res.status(500).json({ error: "Internal server error" });
-//     }
-//     });
 
 groupsRouter.post("/", async (req, res) => {
     try {

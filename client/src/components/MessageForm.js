@@ -28,7 +28,7 @@ const MessageForm = ({ handleMessageSubmit, messages }) => {
         <div className="MessageForm-wrapper">
             <form onSubmit={handleSubmit} className="MessageForm">
                 <label>
-                Hit Up Your Potential SWOLmate!
+                Future SWOLmate?  Maybe!
                 </label>
                 <label>
                 Message here:
