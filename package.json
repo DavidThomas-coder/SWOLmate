@@ -17,7 +17,7 @@
     "e2e:run": "yarn workspace swolmate-e2e e2e:run"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": "^16.18",
     "yarn": "1.22.22"
   }
 }
