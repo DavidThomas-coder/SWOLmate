@@ -23,13 +23,15 @@ groupsRouter.get("/", async (req, res) => {
 
 groupsRouter.get("/:id", async (req, res) => {
     const { id } = req.params
-        try {
-            const group = await Group.query().findById(id)
-            group.users = await group.$relatedQuery("users") 
-            return res.status(200).json({ group: group }) 
-            return res.status(500).json({ errors: error })
-        }
-    })
+    try {
+        const group = await Group.query().findById(id)
+        group.users = await group.$relatedQuery("users")
+        return res.status(200).json({ group: group }) 
+    } catch (error) {
+        return res.status(500).json({ errors: error })
+    }
+})
+
 
 groupsRouter.post("/", async (req, res) => {
     try {
